@@ -1,0 +1,120 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 96px 32px;
+  gap: 80px;
+  position: relative;
+  max-width: 896px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.faq-container {
+  width: 100%;
+}
+
+.faq-title {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #111827;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 64px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 100%;
+  max-width: 832px;
+}
+
+.faq-item {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 74px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.faq-button {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  width: 100%;
+  min-height: 72px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-button span {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #111827;
+}
+
+.faq-icon {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.faq-icon-open {
+  transform: rotate(45deg);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 24px;
+}
+
+.faq-item[data-open="true"] .faq-answer {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 0 24px 24px 24px;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer p {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4B5563;
+  margin: 0;
+}
+

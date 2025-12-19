@@ -1,0 +1,200 @@
+.funding-calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 96px 80px;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+.funding-calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  gap: 48px;
+}
+
+.funding-calculator-title {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #111827;
+  margin: 0;
+  text-align: center;
+}
+
+.funding-calculator-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #4B5563;
+  margin: 0;
+  text-align: center;
+}
+
+.funding-calculator-card {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  width: 100%;
+  max-width: 832px;
+  padding: 48px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+}
+
+.funding-calculator-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 343px;
+}
+
+.funding-calculator-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.funding-calculator-field label {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #374151;
+}
+
+.funding-calculator-slider {
+  width: 100%;
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.funding-calculator-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #F99927;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.funding-calculator-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #F99927;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.funding-calculator-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.funding-calculator-labels span {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6B7280;
+}
+
+.funding-calculator-value {
+  font-weight: 600;
+  color: #F99927 !important;
+}
+
+.funding-calculator-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 343px;
+  padding: 32px;
+  background: #F9FAFB;
+  border-radius: 12px;
+}
+
+.funding-calculator-result-label {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #111827;
+  margin: 0;
+}
+
+.funding-calculator-result-value {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  color: #F99927;
+  margin: 0;
+}
+
+.funding-calculator-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.funding-calculator-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.funding-calculator-detail span:first-child {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4B5563;
+}
+
+.funding-calculator-detail span:last-child {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #111827;
+}
+
+.funding-calculator-button {
+  margin-top: 16px;
+  padding: 12px 0px;
+  background: #111827;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
