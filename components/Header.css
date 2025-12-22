@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 16px 112px;
+  padding: 8px 112px;
   position: fixed;
   width: 100%;
-  height: 97px;
+  height: 56px;
   left: 0px;
   top: 0px;
   background: rgba(255, 255, 255, 0.2);
@@ -33,7 +33,7 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 16px 32px;
+    padding: 8px 32px;
   }
   
   .header-container {
@@ -57,20 +57,19 @@
   padding: 0px;
   width: 100%;
   max-width: 1216px;
-  height: 64px;
+  height: 40px;
   margin: 0 auto;
-
 }
 
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  height: 64px;
+  height: 40px;
 }
 
 .logo-image {
-  height: 65px;
+  height: 36px;
   width: auto;
 }
 

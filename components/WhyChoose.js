@@ -12,7 +12,7 @@ export default function WhyChoose() {
           <path d="M2 12L12 17L22 12" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      title: "Sans dilution",
+      title: "No Equity Dilution",
       description: "Keep 100% ownership of your business and creative control."
     },
     {
@@ -21,7 +21,7 @@ export default function WhyChoose() {
           <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      title: "Décision rapide",
+      title: "Fast Decision",
       description: "Get approved and funded in as little as 48 hours."
     },
     {
@@ -31,7 +31,7 @@ export default function WhyChoose() {
           <circle cx="12" cy="12" r="3" stroke="#4B5563" strokeWidth="2"/>
         </svg>
       ),
-      title: "Transparence totale",
+      title: "Full Transparency",
       description: "No hidden fees, clear terms, and transparent pricing."
     },
     {
@@ -43,7 +43,7 @@ export default function WhyChoose() {
           <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45768C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      title: "Accompagnement dédié",
+      title: "Dedicated Support",
       description: "Personal support from industry experts who understand live music."
     }
   ]

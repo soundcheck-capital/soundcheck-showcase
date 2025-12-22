@@ -4,10 +4,12 @@ import { useState } from 'react'
 import './Footer.css'
 import TermsModal from './TermsModal'
 import PrivacyModal from './PrivacyModal'
+import AboutModal from './AboutModal'
 
 export default function Footer() {
   const [isTermsOpen, setIsTermsOpen] = useState(false)
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
+  const [isAboutOpen, setIsAboutOpen] = useState(false)
 
   return (
     <>
@@ -29,9 +31,8 @@ export default function Footer() {
             <div className="footer-column">
               <h4 className="footer-heading">Company</h4>
               <ul className="footer-links">
-                <li><a href="/">About</a></li>
-                <li><a href="/">Careers</a></li>
-                <li><a href="/">Contact</a></li>
+                <li><button className="footer-link-button" onClick={() => setIsAboutOpen(true)}>About</button></li>
+                <li><a href="https://meetings.hubspot.com/bpatronoff" target="_blank" rel="noopener noreferrer">Contact</a></li>
               </ul>
             </div>
             <div className="footer-column">
@@ -56,6 +57,7 @@ export default function Footer() {
       </footer>
       <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
       <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <AboutModal isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     </>
   )
 }
