@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+  <g fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Axes -->
+    <path d="M60 170 H270"></path>
+    <path d="M60 170 V50"></path>
+
+    <!-- Axis arrowheads -->
+    <path d="M270 170 L255 160"></path>
+    <path d="M270 170 L255 180"></path>
+
+    <path d="M60 50 L50 64"></path>
+    <path d="M60 50 L70 64"></path>
+
+    <!-- Bars -->
+    <rect x="90" y="138" width="26" height="32" rx="4"></rect>
+    <rect x="130" y="118" width="26" height="52" rx="4"></rect>
+    <rect x="170" y="98" width="26" height="72" rx="4"></rect>
+
+    <!-- Upward trend line (raised for spacing) -->
+    <path d="M88 110
+             L122 92
+             L150 98
+             L182 72
+             L212 78
+             L244 52"></path>
+
+    <!-- Trend arrowhead aligned with last segment -->
+    <path d="M244 52 L226 54"></path>
+    <path d="M244 52 L236 70"></path>
+  </g>
+</svg>

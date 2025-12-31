@@ -9,27 +9,27 @@ export default function FAQ() {
   const faqs = [
     {
       question: "How do you determine my advance?",
-      answer: "Advance eligibility is based on a variety of factors related to your business, including your ticketing and POS volume, time in business and type of events you promote."
+      answer: "Advance eligibility is based on a variety of factors related to your business, including your ticketing, time in business and type of events you promote."
     },
     {
       question: "How can I use my advance?",
-      answer: "SoundCheck advances can be used for any business need, including covering short-term cash flow, paying artists deposit, marketing a show, purchasing equipment, refinancing and paying off debt, renovating an existing venue, opening a new venue, among many other options."
+      answer: "SoundCheck advances can be use for business needs, including but not limited to artist deposits, sales and marketing expenses, and other operational expenses related to promoting events and selling tickets."
     },
     {
       question: "How do I repay my advance?",
-      answer: "Payments are made as a fixed percentage of your tickets and/or POS sales until your advance is fully repaid. If sales are strong, you repay faster; if one show is soft, you repay less."
+      answer: "Payments are made as a fixed percentage of your tickets sales until your advance is fully repaid. If sales are strong, you repay faster; if one show is soft, you repay less."
     },
     {
       question: "How much does it cost?",
-      answer: "SoundCheck charges a fixed fee per ticket or POS transaction until the Advance is recouped. This fee will not change regardless of how long it takes to repay the advance. There is no compounding interest or hidden fees, e.g. no application, prepayment, late fees"
+      answer: "SoundCheck charges a fixed fee per ticket transaction until the Advance is recouped. This fee will not change regardless of how long it takes to repay the advance. There is no compounding interest or hidden fees, e.g. no application, prepayment, late fees"
     },
     {
       question: "Can I prepay my advance?",
       answer: "Yes, there are no fees for early repayment."
     },
     {
-      question: "Can I stay with my current ticketing and POS partners?",
-      answer: "Yes. We will never tell you that you have to work with a specific ticketing company or POS vendor. We work with most of the leading ticketing and POS platforms but in some cases, if your partner isn't able to meet our criteria we might not be able to provide funding."
+      question: "Can I stay with my current ticketing partner?",
+      answer: "Yes. We will never tell you that you have to work with a specific ticketing company. We work with most of the leading ticketing platforms but in some cases, if your partner isn't able to meet our criteria we might not be able to provide funding."
     },
     {
       question: "Does applying for an advance affect my credit score?",

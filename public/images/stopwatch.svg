@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <g stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Main stopwatch circle -->
+    <circle cx="144" cy="144" r="72"></circle>
+
+    <!-- Top button -->
+    <rect x="120" y="24" width="48" height="20" rx="8"></rect>
+    <line x1="144" y1="44" x2="144" y2="72"></line>
+
+    <!-- Side button -->
+    <rect x="190" y="60" width="28" height="14" rx="7" transform="rotate(35 190 60)"></rect>
+
+    <!-- Speed lines -->
+    <line x1="32" y1="120" x2="88" y2="120"></line>
+    <line x1="32" y1="144" x2="104" y2="144"></line>
+    <line x1="32" y1="168" x2="88" y2="168"></line>
+
+    <!-- Clock hands -->
+    <line x1="144" y1="144" x2="144" y2="104"></line>
+    <line x1="144" y1="144" x2="176" y2="168"></line>
+
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Outer bill frame -->
+    <rect x="20" y="40" width="280" height="120" rx="18" ry="18"></rect>
+
+    <!-- Inner decorative frame -->
+    <rect x="40" y="60" width="240" height="80" rx="12" ry="12"></rect>
+
+    <!-- Center circle -->
+    <circle cx="160" cy="100" r="26"></circle>
+
+    <!-- Dollar symbol -->
+    <path d="M160 84 V116"></path>
+    <path d="M168 90
+             C168 84 152 84 152 92
+             C152 100 168 100 168 108
+             C168 116 152 116 152 110"></path>
+
+    <!-- Side details -->
+    <rect x="66" y="90" width="16" height="20" rx="4"></rect>
+    <rect x="238" y="90" width="16" height="20" rx="4"></rect>
+
+  </g>
+</svg>

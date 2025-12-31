@@ -34,7 +34,23 @@
   right: 0px;
   top: 0px;
   bottom: 0px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.75) 0%, 
+    rgba(0, 0, 0, 0.65) 25%,
+    rgba(0, 0, 0, 0.6) 50%, 
+    rgba(0, 0, 0, 0.65) 75%,
+    rgba(0, 0, 0, 0.55) 100%);
+  z-index: 1;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background: rgba(17, 24, 39, 0.4);
   z-index: 1;
 }
 
@@ -45,12 +61,11 @@
   right: 0px;
   bottom: 0px;
   background: linear-gradient(0deg, 
-    #FFFFFF 0%, 
-    #FFFFFF 10%,
-    rgba(255, 255, 255, 0.95) 25%,
-    rgba(255, 255, 255, 0.7) 50%,
-    rgba(255, 255, 255, 0.3) 75%,
-    rgba(255, 255, 255, 0) 100%);
+    rgba(10, 10, 10, 0.95) 0%, 
+    rgba(10, 10, 10, 0.9) 20%,
+    rgba(10, 10, 10, 0.7) 50%,
+    rgba(10, 10, 10, 0.4) 75%,
+    rgba(10, 10, 10, 0) 100%);
   z-index: 1;
 }
 
@@ -293,6 +308,21 @@
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-form-result-label {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #E5E7EB;
+  text-align: center;
+  margin: 0;
 }
 
 .hero-form-result-value {
@@ -305,8 +335,20 @@
   text-align: center;
 }
 
+.hero-form-result-disclaimer {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  color: #D1D5DB;
+  text-align: center;
+  margin: 0;
+  max-width: 100%;
+}
+
 .hero-right {
-  width: 584px;
+  width: 640px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -339,7 +381,7 @@
 .hero-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
   margin: 10px 0;
 }
@@ -347,8 +389,8 @@
 .hero-feature {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
 }
 
 .hero-feature svg {
@@ -359,16 +401,18 @@
 .hero-feature-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
+  flex: 1;
 }
 
 .hero-feature span {
   font-family: 'Inter', sans-serif;
   font-style: bold;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
   color: #FFFFFF;
+  white-space: nowrap;
 }
 
 .hero-feature-subtext {

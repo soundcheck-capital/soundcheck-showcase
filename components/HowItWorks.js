@@ -1,48 +1,61 @@
 'use client'
 
+import Image from 'next/image'
 import './HowItWorks.css'
 
 export default function HowItWorks() {
   const steps = [
     {
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M3 3V21H21" stroke="#4B5563" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M7 16L12 11L16 15L21 10" stroke="#4B5563" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
+        <Image
+          src="/images/graph.svg"
+          alt="Graph icon"
+          width={64}
+          height={64}
+          className="how-it-works-icon-image"
+        />
       ),
       title: "Tell us about your business",
-      description: "We use data related to your business, including your historical ticket and/or POS sales along with third party data to determine your financing eligibility"
+      description: "We use data related to your business, including your historical ticket along with third party data to determine your financing eligibility"
     },
     {
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="3" width="18" height="18" rx="2" stroke="#4B5563" strokeWidth="2"/>
-          <path d="M9 9H15V15H9V9Z" fill="#4B5563"/>
-        </svg>
+        <Image
+          src="/images/graph2.svg"
+          alt="Analytics icon"
+          width={64}
+          height={64}
+          className="how-it-works-icon-image"
+        />
       ),
       title: "Personalize your advance",
-      description: "Our proprietary platform uses data science, developed from years of experience financing promoters and venues, to offer personalized advances against a percentage of future ticket and/or POS sales"
+      description: "Our proprietary platform uses data science, developed from years of experience financing promoters and venues, to offer personalized advances against a percentage of future ticket sales"
     },
     {
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2V6M12 18V22M6 12H2M22 12H18" stroke="#4B5563" strokeWidth="2" strokeLinecap="round"/>
-          <circle cx="12" cy="12" r="4" stroke="#4B5563" strokeWidth="2"/>
-        </svg>
+        <Image
+          src="/images/stopwatch.svg"
+          alt="Stopwatch icon"
+          width={64}
+          height={64}
+          className="how-it-works-icon-image"
+        />
       ),
       title: "Get Funded",
       description: "Finalize your Advance Agreement and receive funds within days"
     },
     {
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2V6M12 18V22M6 12H2M22 12H18" stroke="#4B5563" strokeWidth="2" strokeLinecap="round"/>
-          <circle cx="12" cy="12" r="4" stroke="#4B5563" strokeWidth="2"/>
-        </svg>
+        <Image
+          src="/images/dollar.svg"
+          alt="Dollar icon"
+          width={64}
+          height={64}
+          className="how-it-works-icon-image"
+        />
       ),
       title: "Repay us when you sell Tickets",
-      description: "With payments synchronized to your Ticket and/or POS Sales, repay us when you sell tickets or F&B. If sales are strong, you repay faster; if one show is soft, you repay less."
+      description: "With payments synchronized to your Ticket sale, repay us when you sell tickets or F&B. If sales are strong, you repay faster; if one show is soft, you repay less."
     }
   ]
 
@@ -50,7 +63,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="how-it-works">
       <div className="how-it-works-container">
         <h2 className="how-it-works-title">How It Works</h2>
-        <p className="how-it-works-subtitle">SoundCheck Capital provides funding based on your ticket and/or POS sales. Repayment is made as a fixed percentage of your ticket sales. The process is simple, fast and transparent. </p>
+        <p className="how-it-works-subtitle">SoundCheck Capital provides funding based on your ticket sales. Repayment is made as a fixed percentage of your ticket sales. The process is simple, fast and transparent. </p>
         <div className="how-it-works-grid">
           {steps.map((step, index) => (
             <div key={index} className="how-it-works-card">

@@ -4,7 +4,13 @@
   align-items: center;
   padding: 96px 80px;
   width: 100%;
-  background: #F9FAFB;
+  background: linear-gradient(180deg, 
+    #0A0A0A 0%, 
+    #0A0A0A 20%,
+    #1A0A1A 50%,
+    #2D0A2D 80%,
+    #3D1A3D 100%);
+  position: relative;
 }
 
 .why-choose-container {
@@ -22,7 +28,7 @@
   font-weight: 700;
   font-size: 36px;
   line-height: 40px;
-  color: #111827;
+  color: #FFFFFF;
   margin: 0;
   text-align: center;
 }
@@ -40,14 +46,43 @@
   align-items: center;
   padding: 32px;
   gap: 16px;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 16px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.why-choose-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    rgba(255, 255, 255, 0.4) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .why-choose-card:hover {
   transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.15);
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.12), 
               0px 8px 16px rgba(0, 0, 0, 0.08);
 }
@@ -58,8 +93,11 @@
   justify-content: center;
   width: 64px;
   height: 64px;
-  background: #F3F4F6;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .why-choose-card-title {
@@ -68,7 +106,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
-  color: #111827;
+  color: #FFFFFF;
   margin: 0;
   text-align: center;
 }
@@ -79,7 +117,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #4B5563;
+  color: #E5E7EB;
   margin: 0;
   text-align: center;
 }
