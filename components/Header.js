@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import './Header.css'
 
 export default function Header() {
@@ -16,10 +17,13 @@ export default function Header() {
     <header className="header">
       <div className="header-container">
         <Link href="/" className="logo">
-          <img 
+          <Image 
             src="/images/clean_logo.svg" 
             alt="Soundcheck Capital" 
+            width={150}
+            height={40}
             className="logo-image"
+            priority
           />
         </Link>
         <nav className="nav">

@@ -6,9 +6,9 @@ import { sendCalculatorDataToHubSpot, sendCalculatorDataWithEmail } from '../ser
 import './Hero.css'
 
 export default function Hero() {
-  const [yearsInBusiness, setYearsInBusiness] = useState(1)
-  const [numberOfEvents, setNumberOfEvents] = useState(1)
-  const [grossTicketSales, setGrossTicketSales] = useState(100000)
+  const [yearsInBusiness, setYearsInBusiness] = useState(5)
+  const [numberOfEvents, setNumberOfEvents] = useState(25)
+  const [grossTicketSales, setGrossTicketSales] = useState(2500000)
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
