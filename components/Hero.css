@@ -242,6 +242,7 @@
   flex-direction: column;
   gap: 8px;
   height: 68px;
+  margin-bottom: 16px;
 }
 
 .hero-form-field label {
@@ -257,7 +258,7 @@
 .hero-form-slider {
   width: 100%;
   height: 8px;
-  background: #E5E7EB;
+  background: rgba(229, 231, 235, 0.4);
   border-radius: 8px;
   -webkit-appearance: none;
   appearance: none;
@@ -288,6 +289,7 @@
   justify-content: center;
   align-items: center;
   height: 20px;
+
 }
 
 .hero-form-labels span {
@@ -301,7 +303,293 @@
 
 .hero-form-value {
   font-weight: 600;
+  font-size: 25px;
+  line-height: 24px;
   color: #F99927 !important;
+}
+
+.hero-form-labels .hero-form-value {
+  font-size: 25px !important;
+  line-height: 24px !important;
+  font-weight: 600 !important;
+  color: #dadada !important;
+  margin-top: 20px !important;
+}
+
+.hero-form-email {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 9999px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-form-email * {
+  box-sizing: border-box;
+}
+
+.hero-form-email-input {
+  flex: 1;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF !important;
+  padding: 0;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.hero-form-email-input:focus,
+.hero-form-email-input:active,
+.hero-form-email-input:-webkit-autofill,
+.hero-form-email-input:-webkit-autofill:hover,
+.hero-form-email-input:-webkit-autofill:focus,
+.hero-form-email-input:-webkit-autofill:active {
+  outline: none !important;
+  border: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+.hero-form-email:focus-within {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-form-email-input::placeholder {
+  color: #9CA3AF;
+}
+
+/* Override any injected styles from password managers */
+.hero-form-email-input[type="email"],
+.hero-form-email-input[type="text"] {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.hero-form-email-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-form-email-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 20px;
+  background: #440c32;
+  border: none;
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.hero-form-email-button:hover:not(:disabled) {
+  background: #8B1A6C;
+  transform: scale(1.02);
+}
+
+.hero-form-email-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.hero-form-email-button svg {
+  flex-shrink: 0;
+}
+
+.hero-form-email-error {
+  margin-top: 2px;
+  padding-left: 16px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 10px;
+  color: #EF4444;
+}
+
+.hero-form-email-button-loading {
+  justify-content: center;
+}
+
+.hero-form-email-button-success {
+  justify-content: center;
+}
+
+/* Spinner circulaire */
+.hero-form-email-button-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icône check */
+.hero-form-email-button-check {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  animation: checkFadeIn 0.3s ease-in;
+}
+
+@keyframes checkFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-form-email-button-animation {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  transition: all 0.5s;
+  opacity: 1;
+  transform: scale(1);
+  height: 18px;
+}
+
+.hero-form-email-button-bar {
+  width: 4px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 9999px;
+  transition: transform 0.3s ease;
+  align-self: flex-end;
+  margin-bottom: 0;
+}
+
+/* Première barre (la plus courte, élevée) */
+.hero-form-email-button-bar:first-child {
+  height: 8px;
+  align-self: flex-start;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+/* Deuxième barre (la plus haute) */
+.hero-form-email-button-bar-tall {
+  height: 18px;
+  align-self: flex-end;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Troisième barre (moyenne-haute) */
+.hero-form-email-button-bar-medium {
+  height: 14px;
+  align-self: flex-end;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Quatrième barre (moyenne-courte) */
+.hero-form-email-button-bar-small {
+  height: 10px;
+  align-self: flex-end;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Animation au hover */
+.hero-form-email-button:hover .hero-form-email-button-bar {
+  animation: bounce 1.5s infinite;
+}
+
+.hero-form-email-button:hover .hero-form-email-button-bar-tall {
+  animation: pulse 1.1s infinite;
+}
+
+.hero-form-email-button:hover .hero-form-email-button-bar-medium {
+  animation: bounce 0.9s infinite;
+}
+
+.hero-form-email-button:hover .hero-form-email-button-bar-small {
+  animation: pulse 1.3s infinite;
+}
+
+/* Animation au clic */
+.hero-form-email-button:active .hero-form-email-button-bar,
+.hero-form-email-button-loading .hero-form-email-button-bar {
+  animation: bounce 1.5s infinite;
+}
+
+.hero-form-email-button:active .hero-form-email-button-bar-tall,
+.hero-form-email-button-loading .hero-form-email-button-bar-tall {
+  animation: pulse 1.1s infinite;
+}
+
+.hero-form-email-button:active .hero-form-email-button-bar-medium,
+.hero-form-email-button-loading .hero-form-email-button-bar-medium {
+  animation: bounce 0.9s infinite;
+}
+
+.hero-form-email-button:active .hero-form-email-button-bar-small,
+.hero-form-email-button-loading .hero-form-email-button-bar-small {
+  animation: pulse 1.3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(0.8);
+  }
 }
 
 .hero-form-result {
@@ -437,11 +725,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 12px 32px;
-  gap: 6px;
+  padding: 16px 40px;
+  margin-top: 20px;
+  gap: 8px;
   width: fit-content;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 56px;
+  background: linear-gradient(135deg, #F99927 0%, #EF2859 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 9999px;
@@ -449,14 +738,15 @@
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 18px;
   line-height: 24px;
   color: #FFFFFF;
   text-decoration: none;
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 4px 20px rgba(249, 153, 39, 0.5);
 }
 
 .hero-button::before {
@@ -483,8 +773,9 @@
 }
 
 .hero-button:hover {
-  background: rgba(255, 255, 255, 0.18);
-  transform: scale(1.02);
+  background: linear-gradient(135deg, #FFA947 0%, #F5386B 100%);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 30px rgba(249, 153, 39, 0.7);
 }
 
 .hero-button svg {

@@ -16,13 +16,14 @@ export default function FAQ() {
       answer: "SoundCheck advances can be use for business needs, including but not limited to artist deposits, sales and marketing expenses, and other operational expenses related to promoting events and selling tickets."
     },
     {
-      question: "How do I repay my advance?",
-      answer: "Payments are made as a fixed percentage of your tickets sales until your advance is fully repaid. If sales are strong, you repay faster; if one show is soft, you repay less."
+      question: "How much does it cost?",
+      answer: "SoundCheck charges a single, flat fee that never changes. There is no compounding interest and no hidden fees—no application, prepayment, or late fees."
     },
     {
-      question: "How much does it cost?",
-      answer: "SoundCheck charges a fixed fee per ticket transaction until the Advance is recouped. This fee will not change regardless of how long it takes to repay the advance. There is no compounding interest or hidden fees, e.g. no application, prepayment, late fees"
+      question: "How do I repay my advance?",
+      answer: "Payments are made as a fixed percentage of your tickets sales until the total balance is paid. If sales are strong, you repay faster; if one show is soft, you repay less."
     },
+  
     {
       question: "Can I prepay my advance?",
       answer: "Yes, there are no fees for early repayment."

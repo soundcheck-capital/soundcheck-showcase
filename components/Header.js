@@ -17,7 +17,7 @@ export default function Header() {
       <div className="header-container">
         <Link href="/" className="logo">
           <img 
-            src="/images/side_logo_white_bold.svg" 
+            src="/images/clean_logo.svg" 
             alt="Soundcheck Capital" 
             className="logo-image"
           />

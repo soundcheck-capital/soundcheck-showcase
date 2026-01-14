@@ -2,19 +2,29 @@
 
 import { useState, useEffect } from 'react'
 import { calculateAdvance } from '../utils/calculator'
-import { sendCalculatorDataToHubSpot } from '../services/hubspot'
+import { sendCalculatorDataToHubSpot, sendCalculatorDataWithEmail } from '../services/hubspot'
 import './Hero.css'
 
 export default function Hero() {
-  const [yearsInBusiness, setYearsInBusiness] = useState(5)
-  const [numberOfEvents, setNumberOfEvents] = useState(8)
-  const [grossTicketSales, setGrossTicketSales] = useState(500000)
+  const [yearsInBusiness, setYearsInBusiness] = useState(1)
+  const [numberOfEvents, setNumberOfEvents] = useState(1)
+  const [grossTicketSales, setGrossTicketSales] = useState(100000)
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [emailError, setEmailError] = useState('')
+
+  // Initialize advanceResult with calculated value to avoid hydration mismatch
+  const [advanceResult, setAdvanceResult] = useState(() => {
+    const yearsForCalc = 1 >= 10 ? 10 : 1
+    const eventsForCalc = 1 >= 50 ? 50 : 1
+    return calculateAdvance(yearsForCalc, eventsForCalc, 100000)
+  })
 
   // Use minimum of 10 for years calculation if >= 10
   const yearsForCalculation = yearsInBusiness >= 10 ? 10 : yearsInBusiness
   // Use minimum of 50 for events calculation if >= 50
   const eventsForCalculation = numberOfEvents >= 50 ? 50 : numberOfEvents
-  const [advanceResult, setAdvanceResult] = useState(null)
 
   // Calculate advance amount
   useEffect(() => {
@@ -50,6 +60,56 @@ export default function Hero() {
     
     // Open HubSpot link after sending data (or even if sending fails)
     window.open('https://meetings.hubspot.com/bpatronoff', '_blank', 'noopener,noreferrer')
+  }
+
+  // Handle Start now click - send data to HubSpot with email
+  const handleStartNowClick = async () => {
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      setEmailError('Please enter a valid email address.')
+      return
+    }
+
+    setEmailError('')
+    setIsLoading(true)
+    setIsSuccess(false)
+
+    if (advanceResult) {
+      try {
+        console.log('Sending calculator data with email to HubSpot...', {
+          yearsInBusiness,
+          numberOfEvents,
+          grossTicketSales,
+          advanceAmount: advanceResult.advanceAmount,
+          email,
+        })
+
+        const result = await sendCalculatorDataWithEmail({
+          yearsInBusiness,
+          numberOfEvents,
+          grossTicketSales,
+          advanceAmount: advanceResult.advanceAmount,
+          email,
+        })
+
+        if (result.success == true) {
+          console.log('Data with email sent successfully')
+          setIsLoading(false)
+          setIsSuccess(true)
+          setEmail('') // Clear email field on success
+          
+          // Réafficher les barres après 2 secondes
+          setTimeout(() => {
+            setIsSuccess(false)
+          }, 2000)
+        } else {
+          throw new Error(`Request failed with status ${result.status}`)
+        }
+      } catch (error) {
+        console.error('Error sending data with email:', error)
+        setIsLoading(false)
+        alert('Failed to send data. Please try again later.')
+      }
+    }
   }
 
   const formatCurrency = (amount) => {
@@ -166,7 +226,7 @@ export default function Hero() {
               <label>How long have you been in business?</label>
               <input 
                 type="range" 
-                min="0" 
+                min="1" 
                 max="10" 
                 value={yearsInBusiness} 
                 onChange={(e) => setYearsInBusiness(parseInt(e.target.value))}
@@ -180,7 +240,7 @@ export default function Hero() {
               <label>How many events do you promote a year?</label>
               <input 
                 type="range" 
-                min="0" 
+                min="1" 
                 max="50" 
                 value={numberOfEvents} 
                 onChange={(e) => setNumberOfEvents(parseInt(e.target.value))}
@@ -194,7 +254,7 @@ export default function Hero() {
               <label>How much gross ticket sales do you sell a year?</label>
               <input 
                 type="range" 
-                min="0" 
+                min="100000" 
                 max="5000000"
                 step="100000"
                 value={grossTicketSales} 
@@ -205,15 +265,45 @@ export default function Hero() {
                 <span className="hero-form-value">{grossTicketSales >= 5000000 ? '$5M+' : formatCurrency(grossTicketSales)}</span>
               </div>
             </div>
-            <div className="hero-form-result">
-              <p className="hero-form-result-label">You're eligible for up to</p>
-              <div className="hero-form-result-value">
-                {advanceResult ? formatCurrency(advanceResult.advanceAmount) : '$0'}
-              </div>
-              <p className="hero-form-result-disclaimer">
-                This estimate is based on the data provided and SoundCheck's market insights. To receive a formal offer, please apply and book a call with our team!
-              </p>
+            <div className="hero-form-email">
+              <input
+                type="email"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setEmailError('') // Clear error when user types
+                }}
+                className="hero-form-email-input"
+                suppressHydrationWarning
+              />
+      
+              <button
+                className={`hero-form-email-button ${isLoading ? 'hero-form-email-button-loading' : ''} ${isSuccess ? 'hero-form-email-button-success' : ''}`}
+                onClick={handleStartNowClick}
+                disabled={isLoading || isSuccess}
+              >
+                {isLoading ? (
+                  <div className="hero-form-email-button-spinner"></div>
+                ) : isSuccess ? (
+                  <svg className="hero-form-email-button-check" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ) : (
+                  <div className="hero-form-email-button-animation">
+                    <div className="hero-form-email-button-bar" style={{ animationDelay: '0.3s', animationDuration: '1.5s' }} />
+                    <div className="hero-form-email-button-bar hero-form-email-button-bar-tall" style={{ animationDelay: '0.4s', animationDuration: '1.1s' }} />
+                    <div className="hero-form-email-button-bar hero-form-email-button-bar-medium" style={{ animationDelay: '0.5s', animationDuration: '0.9s' }} />
+                    <div className="hero-form-email-button-bar hero-form-email-button-bar-small" style={{ animationDelay: '0.6s', animationDuration: '1.3s' }} />
+                  </div>
+                )}
+              </button>
             </div>
+            {emailError && (
+              <div className="hero-form-email-error">
+                {emailError}
+              </div>
+            )}
           </div>
         </div>
       </div>

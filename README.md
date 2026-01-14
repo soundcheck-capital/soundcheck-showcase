@@ -1,57 +1,56 @@
-# Soundcheck Showcase - Next.js
+# Soundcheck Showcase
 
-Site vitrine Soundcheck migré de Gatsby vers Next.js.
+Site vitrine créé avec Gatsby.
 
-## Installation
+## 🚀 Démarrage rapide
+
+### Installation
 
 ```bash
 npm install
 ```
 
-## Développement
+### Développement
+
+Lancez le serveur de développement :
 
 ```bash
-npm run dev
+npm run develop
 ```
 
-Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
+Le site sera accessible sur [http://localhost:8000](http://localhost:8000)
 
-## Build de production
+### Build
+
+Pour créer une version de production :
 
 ```bash
 npm run build
-npm start
 ```
 
-## Structure du projet
+### Serve
 
-- `app/` - Pages et layout Next.js (App Router)
-- `components/` - Composants React réutilisables
-- `public/images/` - Images statiques
-- `components/*.css` - Styles CSS pour chaque composant
-
-## Technologies
-
-- Next.js 14
-- React 18
-- CSS Modules (fichiers CSS séparés)
-
-## Configuration HubSpot / Make.com
-
-Pour envoyer les données du simulateur vers HubSpot via Make.com, configurez la variable d'environnement :
-
-1. Créez un fichier `.env.local` à la racine du projet
-2. Ajoutez l'URL de votre webhook Make.com :
+Pour tester la version de production localement :
 
 ```bash
-NEXT_PUBLIC_MAKE_WEBHOOK_URL=https://hook.eu1.make.com/your-webhook-url-here
+npm run serve
 ```
 
-Les données envoyées incluent :
-- `yearsInBusiness` : Années d'activité
-- `numberOfEvents` : Nombre d'événements par an
-- `grossTicketSales` : Chiffre d'affaires annuel
-- `advanceAmount` : Montant de l'avance calculé
-- `timestamp` : Date et heure de l'envoi
+## 📁 Structure du projet
 
-Les données sont envoyées uniquement au clic sur le bouton "Book a call".
+```
+soundcheck-showcase/
+├── src/
+│   ├── components/     # Composants React réutilisables
+│   ├── pages/          # Pages du site
+│   └── images/         # Images statiques
+├── gatsby-config.js    # Configuration Gatsby
+└── package.json
+```
+
+## 🛠 Technologies
+
+- **Gatsby** - Framework React pour sites statiques
+- **React** - Bibliothèque JavaScript
+- **GraphQL** - Requêtes de données
+
