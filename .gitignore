@@ -94,7 +94,7 @@ dist
 
 # Gatsby files
 .cache/
-# public - Ne pas ignorer, nécessaire pour les fichiers statiques (images, etc.)
+# public - Ne pas ignorer, nécessaire pour les fichiers statiques Next.js (images, etc.)
 
 # vuepress build output
 .vuepress/dist

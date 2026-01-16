@@ -123,6 +123,19 @@ export default function Hero() {
     return `$${amount.toLocaleString()}`
   }
 
+  // Handle gross ticket sales change with variable steps
+  const handleGrossTicketSalesChange = (e) => {
+    const value = parseInt(e.target.value)
+    
+    // Round to nearest 100K for all values
+    const adjustedValue = Math.round(value / 100000) * 100000
+    
+    // Ensure value is within bounds (min 100K, max 5M)
+    const finalValue = Math.max(100000, Math.min(adjustedValue, 5000000))
+    
+    setGrossTicketSales(finalValue)
+  }
+
   const formatYears = (years) => {
     return `${years} year${years > 1 ? 's' : ''}`
   }
@@ -221,7 +234,7 @@ export default function Hero() {
         </div>
         <div className="hero-left">
           <div className="hero-form">
-            <h3 className="hero-form-title">See What's Possible</h3>
+            <h3 className="hero-form-title">See your offer</h3>
             <div className="hero-form-field">
               <label>How long have you been in business?</label>
               <input 
@@ -258,13 +271,14 @@ export default function Hero() {
                 max="5000000"
                 step="100000"
                 value={grossTicketSales} 
-                onChange={(e) => setGrossTicketSales(parseInt(e.target.value))}
+                onChange={handleGrossTicketSalesChange}
                 className="hero-form-slider" 
               />
               <div className="hero-form-labels">
                 <span className="hero-form-value">{grossTicketSales >= 5000000 ? '$5M+' : formatCurrency(grossTicketSales)}</span>
               </div>
             </div>
+            <span className="hero-form-email-text">Receive your personalized offer</span>
             <div className="hero-form-email">
               <input
                 type="email"

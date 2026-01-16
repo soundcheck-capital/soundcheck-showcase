@@ -1,13 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import './HowItWorks.css'
 
 export default function HowItWorks() {
   const steps = [
     {
       icon: (
-        <Image
+        <img
           src="/images/graph.svg"
           alt="Graph icon"
           width={64}
@@ -20,7 +19,7 @@ export default function HowItWorks() {
     },
     {
       icon: (
-        <Image
+        <img
           src="/images/graph2.svg"
           alt="Analytics icon"
           width={64}
@@ -33,7 +32,7 @@ export default function HowItWorks() {
     },
     {
       icon: (
-        <Image
+        <img
           src="/images/stopwatch.svg"
           alt="Stopwatch icon"
           width={64}
@@ -46,7 +45,7 @@ export default function HowItWorks() {
     },
     {
       icon: (
-        <Image
+        <img
           src="/images/dollar.svg"
           alt="Dollar icon"
           width={64}
