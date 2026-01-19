@@ -6,9 +6,9 @@ import { sendCalculatorDataWithEmail } from '../services/hubspot'
 import './Hero.css'
 
 export default function Hero() {
-  const [yearsInBusiness, setYearsInBusiness] = useState(1)
-  const [numberOfEvents, setNumberOfEvents] = useState(1)
-  const [grossTicketSales, setGrossTicketSales] = useState(100000)
+  const [yearsInBusiness, setYearsInBusiness] = useState(5)
+  const [numberOfEvents, setNumberOfEvents] = useState(25)
+  const [grossTicketSales, setGrossTicketSales] = useState(2500000)
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -16,9 +16,9 @@ export default function Hero() {
 
   // Initialize advanceResult with calculated value to avoid hydration mismatch
   const [advanceResult, setAdvanceResult] = useState(() => {
-    const yearsForCalc = 1 >= 10 ? 10 : 1
-    const eventsForCalc = 1 >= 50 ? 50 : 1
-    return calculateAdvance(yearsForCalc, eventsForCalc, 100000)
+    const yearsForCalc = 5 >= 10 ? 10 : 5
+    const eventsForCalc = 25 >= 50 ? 50 : 25
+    return calculateAdvance(yearsForCalc, eventsForCalc, 2500000)
   })
 
   // Use minimum of 10 for years calculation if >= 10
