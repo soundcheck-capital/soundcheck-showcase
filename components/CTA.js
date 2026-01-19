@@ -11,7 +11,7 @@ export default function CTA() {
         <p className="cta-description">
         Join hundreds of promoters who've funded their shows with SoundCheck Capital.
         </p>
-        <a href="https://meetings.hubspot.com/bpatronoff" target="_blank" rel="noopener noreferrer" className="cta-button">Ask for an advance now</a>
+        <a href="https://meetings.hubspot.com/bpatronoff" target="_blank" rel="noopener noreferrer" className="cta-button">Book a call</a>
       </div>
     </section>
   )

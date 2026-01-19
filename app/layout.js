@@ -2,8 +2,8 @@ import './globals.css'
 import Header from '../components/Header'
 
 export const metadata = {
-  title: 'Soundcheck Capital',
-  description: 'Site vitrine Soundcheck',
+  title: 'SoundCheck Capital',
+  description: 'Showcase for SoundCheck Capital',
 }
 
 export default function RootLayout({ children }) {

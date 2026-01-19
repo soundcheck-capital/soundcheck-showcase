@@ -26,7 +26,7 @@ export default function Header() {
         <Link href="/" className="logo">
           <img 
             src="/images/clean_logo.svg"
-            alt="Soundcheck Capital" 
+            alt="SoundCheck Capital" 
             className="logo-image"
           />
         </Link>
@@ -41,7 +41,7 @@ export default function Header() {
         </button>
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <a href="#how-it-works" className="nav-link" onClick={(e) => handleLinkClick(e, 'how-it-works')}>
-            How it works
+            How It Works
           </a>
           <a href="#faq" className="nav-link" onClick={(e) => handleLinkClick(e, 'faq')}>
             FAQ
