@@ -235,6 +235,7 @@
   line-height: 32px;
   color: #FFFFFF;
   margin: 0 0 24px 0;
+  text-align: center;
 }
 
 .hero-form-field {
@@ -340,7 +341,7 @@
   font-size: 16px;
   line-height: 24px;
   color: #FFFFFF;
-  text-align: left;
+  text-align: center;
   transition: opacity 0.3s ease;
 }
 
@@ -950,7 +951,7 @@
     font-size: 22px;
     line-height: 30px;
     margin-bottom: 24px;
-    text-align: left;
+    text-align: center;
   }
 
   .hero-form-field {
@@ -996,7 +997,7 @@
     line-height: 22px;
     margin-top: 24px;
     margin-bottom: 4px;
-    text-align: left;
+    text-align: center;
   }
 
   .hero-form-email-error {
@@ -1062,6 +1063,7 @@
     font-size: 20px;
     line-height: 28px;
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .hero-form-field {
