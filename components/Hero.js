@@ -6,9 +6,9 @@ import { sendCalculatorDataWithEmail } from '../services/hubspot'
 import './Hero.css'
 
 export default function Hero() {
-  const [yearsInBusiness, setYearsInBusiness] = useState(5)
-  const [numberOfEvents, setNumberOfEvents] = useState(25)
-  const [grossTicketSales, setGrossTicketSales] = useState(2500000)
+  const [yearsInBusiness, setYearsInBusiness] = useState(1)
+  const [numberOfEvents, setNumberOfEvents] = useState(1)
+  const [grossTicketSales, setGrossTicketSales] = useState(100000)
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -255,7 +255,7 @@ export default function Hero() {
               </div>
             </div>
             <span className="hero-form-email-text">Unlock your offer with your email</span>
-            <div className="hero-form-email">
+            <div className="hero-form-email" suppressHydrationWarning>
               <input
                 type="email"
                 placeholder="Email address"
