@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 96px 112px 120px;
-  padding-top: calc(56px + 32px);
+  padding-top: calc(56px + 64px);
   position: relative;
   min-height: 900px;
   width: 100%;
@@ -324,7 +324,7 @@
   padding: 6px 10px;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 9999px;
+  border-radius: 12px;
   margin-top: 8px;
   position: relative;
   overflow: hidden;
@@ -696,6 +696,7 @@
   gap: 16px;
   width: 100%;
   margin: 10px 0;
+  justify-items: center;
 }
 
 .hero-feature {
@@ -703,6 +704,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  justify-content: center;
 }
 
 .hero-feature svg {
@@ -816,4 +818,309 @@
   line-height: 20px;
   color: #D1D5DB;
   margin: 0;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet and below (1024px) */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 80px 48px 96px;
+    padding-top: calc(56px + 56px);
+    min-height: auto;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-right {
+    width: 100%;
+    max-width: 640px;
+    text-align: center;
+  }
+
+  .hero-left {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: start;
+    max-width: 100%;
+  }
+
+  .hero-feature {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .hero-feature svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .hero-button {
+    width: fit-content;
+    max-width: 400px;
+    margin: 20px auto 0;
+  }
+}
+
+/* Mobile (768px) */
+@media (max-width: 768px) {
+  .hero {
+    padding: 64px 24px 80px;
+    padding-top: calc(56px + 48px);
+    min-height: auto;
+  }
+
+  .hero-background {
+    background-attachment: scroll;
+  }
+
+  .hero-content {
+    gap: 40px;
+  }
+
+  .hero-right {
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -1px;
+    text-align: left;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .hero-features {
+    gap: 12px;
+    justify-items: start;
+  }
+
+  .hero-feature {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-feature svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .hero-feature span {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: normal;
+  }
+
+  .hero-button {
+    padding: 14px 32px;
+    font-size: 16px;
+    width: fit-content;
+    max-width: 100%;
+    height: 52px;
+    margin: 24px auto 0;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-form {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .hero-form-title {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .hero-form-field {
+    margin-bottom: 20px;
+  }
+
+  .hero-form-field label {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  .hero-form-labels {
+    margin-top: 6px;
+  }
+
+  .hero-form-labels .hero-form-value {
+    font-size: 24px !important;
+    line-height: 28px !important;
+    text-align: left;
+  }
+
+  .hero-form-email {
+    padding: 12px 16px;
+    gap: 10px;
+    flex-direction: row;
+  }
+
+  .hero-form-email-input {
+    font-size: 15px;
+    line-height: 20px;
+    flex: 1;
+  }
+
+  .hero-form-email-button {
+    padding: 8px 20px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .hero-form-email-text {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .hero-form-email-error {
+    font-size: 13px;
+    line-height: 18px;
+    text-align: left;
+  }
+}
+
+/* Small Mobile (480px) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 48px 20px 64px;
+    padding-top: calc(56px + 40px);
+  }
+
+  .hero-content {
+    gap: 32px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .hero-features {
+    gap: 10px;
+  }
+
+  .hero-feature {
+    gap: 8px;
+  }
+
+  .hero-feature svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero-feature span {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .hero-button {
+    padding: 12px 24px;
+    font-size: 15px;
+    height: 48px;
+    margin: 20px auto 0;
+    width: fit-content;
+  }
+
+  .hero-form {
+    padding: 20px;
+  }
+
+  .hero-form-title {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  .hero-form-field {
+    margin-bottom: 18px;
+  }
+
+  .hero-form-field label {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .hero-form-labels .hero-form-value {
+    font-size: 22px !important;
+    line-height: 26px !important;
+  }
+
+  .hero-form-email {
+    flex-direction: row;
+    gap: 10px;
+    padding: 12px;
+    justify-content: center;
+  }
+
+  .hero-form-email-input {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .hero-form-email-icon {
+    display: flex;
+  }
+
+  .hero-form-email-button {
+    width: fit-content;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 0 auto;
+  }
+
+  .hero-form-email-text {
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hero-form-email-error {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .hero-gradient-bottom {
+    height: 150px;
+  }
 }

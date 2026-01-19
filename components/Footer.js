@@ -47,8 +47,8 @@ export default function Footer() {
             <p className="footer-copyright">© 2024 Soundcheck Capital. All rights reserved.</p>
             <div className="footer-social">
               <a href="https://www.linkedin.com/company/soundcheck-capital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 5H1V13H3V5ZM2 4C1.45 4 1 3.55 1 3C1 2.45 1.45 2 2 2C2.55 2 3 2.45 3 3C3 3.55 2.55 4 2 4ZM13 9C13 7.34 12.16 6 10.5 6C9.5 6 8.92 6.5 8.5 7H8.5V5H6.5V13H8.5V9.5C8.5 8.67 9.17 8 10 8C10.83 8 11.5 8.67 11.5 9.5V13H13.5V9Z" fill="#9CA3AF"/>
+                <svg width="20" height="20" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 5H1V13H3V5ZM2 4C1.45 4 1 3.55 1 3C1 2.45 1.45 2 2 2C2.55 2 3 2.45 3 3C3 3.55 2.55 4 2 4ZM13 9C13 7.34 12.16 6 10.5 6C9.5 6 8.92 6.5 8.5 7H8.5V5H6.5V13H8.5V9.5C8.5 8.67 9.17 8 10 8C10.83 8 11.5 8.67 11.5 9.5V13H13.5V9Z" fill="#D1D5DB"/>
                 </svg>
               </a>
             </div>
