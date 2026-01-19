@@ -1109,6 +1109,7 @@
     line-height: 20px;
     margin-top: 20px;
     margin-bottom: 4px;
+    text-align: center;
   }
 
   .hero-form-email-error {
