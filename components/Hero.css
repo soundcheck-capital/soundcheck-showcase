@@ -696,7 +696,7 @@
   gap: 16px;
   width: 100%;
   margin: 10px 0;
-  justify-items: center;
+  justify-items: start;
 }
 
 .hero-feature {
@@ -704,7 +704,8 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .hero-feature svg {
