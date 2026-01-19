@@ -11,20 +11,27 @@ export default function Footer() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
 
+  const handleLinkClick = (e, targetId) => {
+    e.preventDefault()
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <>
       <footer id="contact" className="footer">
         <div className="footer-container">
           <div className="footer-content">
             <div className="footer-column">
-              <h3 className="footer-title">Soundcheck Capital</h3>
+              <h3 className="footer-title">SoundCheck Capital</h3>
               <p className="footer-description">Empowering the live music industry with smart funding solutions.</p>
             </div>
             <div className="footer-column">
               <h4 className="footer-heading">Product</h4>
               <ul className="footer-links">
-                <li><a href="/">How it works</a></li>
-                <li><a href="/">Pricing</a></li>
+                <li><a href="#how-it-works" onClick={(e) => handleLinkClick(e, 'how-it-works')}>How It works</a></li>
                 <li><a href="/">Calculator</a></li>
               </ul>
             </div>
@@ -44,7 +51,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p className="footer-copyright">© 2024 Soundcheck Capital. All rights reserved.</p>
+            <p className="footer-copyright">© 2024 SoundCheck Capital. All rights reserved.</p>
             <div className="footer-social">
               <a href="https://www.linkedin.com/company/soundcheck-capital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 14 14" fill="none">

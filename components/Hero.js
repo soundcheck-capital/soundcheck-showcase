@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { calculateAdvance } from '../utils/calculator'
-import { sendCalculatorDataToHubSpot, sendCalculatorDataWithEmail } from '../services/hubspot'
+import { sendCalculatorDataWithEmail } from '../services/hubspot'
 import './Hero.css'
 
 export default function Hero() {
@@ -32,33 +32,9 @@ export default function Hero() {
     setAdvanceResult(result)
   }, [yearsInBusiness, numberOfEvents, grossTicketSales, yearsForCalculation, eventsForCalculation])
 
-  // Handle Book a call click - send data to HubSpot
-  const handleBookCallClick = async (e) => {
+  // Handle Book a call click - open HubSpot link only
+  const handleBookCallClick = (e) => {
     e.preventDefault()
-    
-    if (advanceResult) {
-      try {
-        console.log('Sending calculator data to HubSpot...', {
-          yearsInBusiness,
-          numberOfEvents,
-          grossTicketSales,
-          advanceAmount: advanceResult.advanceAmount,
-        })
-        
-        await sendCalculatorDataToHubSpot({
-          yearsInBusiness,
-          numberOfEvents,
-          grossTicketSales,
-          advanceAmount: advanceResult.advanceAmount,
-        })
-        
-        console.log('Data sent successfully')
-      } catch (error) {
-        console.error('Error sending data:', error)
-      }
-    }
-    
-    // Open HubSpot link after sending data (or even if sending fails)
     window.open('https://meetings.hubspot.com/bpatronoff', '_blank', 'noopener,noreferrer')
   }
 
@@ -234,7 +210,7 @@ export default function Hero() {
         </div>
         <div className="hero-left">
           <div className="hero-form">
-            <h3 className="hero-form-title">See your offer</h3>
+            <h3 className="hero-form-title">Get Funded</h3>
             <div className="hero-form-field">
               <label>How long have you been in business?</label>
               <input 
@@ -278,7 +254,7 @@ export default function Hero() {
                 <span className="hero-form-value">{grossTicketSales >= 5000000 ? '$5M+' : formatCurrency(grossTicketSales)}</span>
               </div>
             </div>
-            <span className="hero-form-email-text">Receive your personalized offer</span>
+            <span className="hero-form-email-text">Unlock your offer with your email</span>
             <div className="hero-form-email">
               <input
                 type="email"
