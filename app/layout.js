@@ -3,7 +3,7 @@ import Header from '../components/Header'
 
 export const metadata = {
   title: 'SoundCheck Capital',
-  description: 'Showcase for SoundCheck Capital',
+  description: '',
 }
 
 export default function RootLayout({ children }) {

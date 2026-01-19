@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="footer-content">
             <div className="footer-column">
               <h3 className="footer-title">SoundCheck Capital</h3>
-              <p className="footer-description">Empowering the live music industry with smart funding solutions.</p>
+              <p className="footer-description">Empowering live music with smart funding solutions.</p>
             </div>
             <div className="footer-column">
               <h4 className="footer-heading">Product</h4>
