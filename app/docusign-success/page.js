@@ -5,14 +5,7 @@ export default function DocuSignSuccessPage() {
   return (
     <div className="docusign-success">
       <div className="docusign-success-inner">
-        <div className="docusign-success-logo">
-          <Image
-            src="/images/logo_white_bold.svg"
-            alt="SoundCheck"
-            width={120}
-            height={96}
-          />
-        </div>
+      
 
         <div className="docusign-success-card">
           <div className="docusign-success-icon-wrap">
