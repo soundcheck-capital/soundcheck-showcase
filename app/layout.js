@@ -1,5 +1,5 @@
 import './globals.css'
-import Header from '../components/Header'
+import LayoutClient from '../components/LayoutClient'
 
 export const metadata = {
   title: 'SoundCheck Capital',
@@ -16,8 +16,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <Header />
-        <main>{children}</main>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   )
