@@ -4,7 +4,7 @@ import './CTA.css'
 
 export default function CTA() {
   return (
-    <section className="cta">
+    <section id="cta" className="cta">
       <div className="cta-gradient"></div>
       <div className="cta-container">
         <h2 className="cta-title">Ready to get funded?</h2>

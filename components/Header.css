@@ -31,6 +31,13 @@
               0 0 30px rgba(31, 41, 55, 0.02);
 }
 
+/* Fond (couleur FAQ) quand on scroll à partir de la section sous la FAQ (CTA) */
+.header--over-light {
+  background: rgba(61, 26, 61, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 /* Burger Button */
 .burger-button {
   display: none;
