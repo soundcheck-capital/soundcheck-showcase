@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { calculateAdvance } from '../utils/calculator'
 import { sendCalculatorDataWithEmail } from '../services/hubspot'
 import './Hero.css'
@@ -12,6 +13,7 @@ export default function Hero() {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [showSnackbar, setShowSnackbar] = useState(false)
   const [emailError, setEmailError] = useState('')
 
   // Initialize advanceResult with calculated value to avoid hydration mismatch
@@ -71,12 +73,10 @@ export default function Hero() {
           console.log('Data with email sent successfully')
           setIsLoading(false)
           setIsSuccess(true)
+          setShowSnackbar(true)
           setEmail('') // Clear email field on success
-          
-          // Réafficher les barres après 2 secondes
-          setTimeout(() => {
-            setIsSuccess(false)
-          }, 2000)
+          setTimeout(() => setIsSuccess(false), 2000)
+          setTimeout(() => setShowSnackbar(false), 4000)
         } else {
           throw new Error(`Request failed with status ${result.status}`)
         }
@@ -120,8 +120,16 @@ export default function Hero() {
     return `${events} event${events > 1 ? 's' : ''}`
   }
 
+  const snackbarEl = showSnackbar && (
+    <div className="hero-snackbar" role="status" aria-live="polite">
+      <span className="hero-snackbar-icon">✓</span>
+      <span>Request sent! We&apos;ll be in touch soon.</span>
+    </div>
+  )
+
   return (
     <section className="hero">
+      {typeof document !== 'undefined' && snackbarEl && createPortal(snackbarEl, document.body)}
       <div className="hero-background"></div>
       <div className="hero-gradient"></div>
       <div className="hero-gradient-bottom"></div>
