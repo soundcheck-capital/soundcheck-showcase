@@ -255,7 +255,7 @@ export default function Hero() {
             {isSuccess ? (
               <div className="hero-form-success-message" role="status" aria-live="polite">
                 <span className="hero-form-success-icon">✓</span>
-                <span>Request sent! We&apos;ll be in touch soon.</span>
+                <span>Estimate sent. Check your inbox. Thx.</span>
               </div>
             ) : (
               <>
