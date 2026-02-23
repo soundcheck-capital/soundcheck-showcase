@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { createPortal } from 'react-dom'
 import { calculateAdvance } from '../utils/calculator'
 import { sendCalculatorDataWithEmail } from '../services/hubspot'
 import './Hero.css'
+
+const SUCCESS_COOLDOWN_MS = 5 * 60 * 1000 // 5 minutes
 
 export default function Hero() {
   const [yearsInBusiness, setYearsInBusiness] = useState(5)
@@ -13,7 +14,6 @@ export default function Hero() {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [showSnackbar, setShowSnackbar] = useState(false)
   const [emailError, setEmailError] = useState('')
 
   // Initialize advanceResult with calculated value to avoid hydration mismatch
@@ -73,10 +73,8 @@ export default function Hero() {
           console.log('Data with email sent successfully')
           setIsLoading(false)
           setIsSuccess(true)
-          setShowSnackbar(true)
-          setEmail('') // Clear email field on success
-          setTimeout(() => setIsSuccess(false), 2000)
-          setTimeout(() => setShowSnackbar(false), 4000)
+          setEmail('')
+          setTimeout(() => setIsSuccess(false), SUCCESS_COOLDOWN_MS)
         } else {
           throw new Error(`Request failed with status ${result.status}`)
         }
@@ -120,16 +118,8 @@ export default function Hero() {
     return `${events} event${events > 1 ? 's' : ''}`
   }
 
-  const snackbarEl = showSnackbar && (
-    <div className="hero-snackbar" role="status" aria-live="polite">
-      <span className="hero-snackbar-icon">✓</span>
-      <span>Request sent! We&apos;ll be in touch soon.</span>
-    </div>
-  )
-
   return (
     <section className="hero">
-      {typeof document !== 'undefined' && snackbarEl && createPortal(snackbarEl, document.body)}
       <div className="hero-background"></div>
       <div className="hero-gradient"></div>
       <div className="hero-gradient-bottom"></div>
@@ -262,45 +252,49 @@ export default function Hero() {
                 <span className="hero-form-value">{grossTicketSales >= 5000000 ? '$5M+' : formatCurrency(grossTicketSales)}</span>
               </div>
             </div>
-            <span className="hero-form-email-text">Unlock your offer with your email</span>
-            <div className="hero-form-email" suppressHydrationWarning>
-              <input
-                type="email"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                  setEmailError('') // Clear error when user types
-                }}
-                className="hero-form-email-input"
-                suppressHydrationWarning
-              />
-      
-              <button
-                className={`hero-form-email-button ${isLoading ? 'hero-form-email-button-loading' : ''} ${isSuccess ? 'hero-form-email-button-success' : ''}`}
-                onClick={handleStartNowClick}
-                disabled={isLoading || isSuccess}
-              >
-                {isLoading ? (
-                  <div className="hero-form-email-button-spinner"></div>
-                ) : isSuccess ? (
-                  <svg className="hero-form-email-button-check" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ) : (
-                  <div className="hero-form-email-button-animation">
-                    <div className="hero-form-email-button-bar" style={{ animationDelay: '0.3s', animationDuration: '1.5s' }} />
-                    <div className="hero-form-email-button-bar hero-form-email-button-bar-tall" style={{ animationDelay: '0.4s', animationDuration: '1.1s' }} />
-                    <div className="hero-form-email-button-bar hero-form-email-button-bar-medium" style={{ animationDelay: '0.5s', animationDuration: '0.9s' }} />
-                    <div className="hero-form-email-button-bar hero-form-email-button-bar-small" style={{ animationDelay: '0.6s', animationDuration: '1.3s' }} />
+            {isSuccess ? (
+              <div className="hero-form-success-message" role="status" aria-live="polite">
+                <span className="hero-form-success-icon">✓</span>
+                <span>Estimate sent. Check your inbox. Thx.</span>
+              </div>
+            ) : (
+              <>
+                <span className="hero-form-email-text">Unlock your offer with your email</span>
+                <div className="hero-form-email" suppressHydrationWarning>
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value)
+                      setEmailError('')
+                    }}
+                    className="hero-form-email-input"
+                    suppressHydrationWarning
+                  />
+                  <button
+                    className={`hero-form-email-button ${isLoading ? 'hero-form-email-button-loading' : ''}`}
+                    onClick={handleStartNowClick}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <div className="hero-form-email-button-spinner"></div>
+                    ) : (
+                      <div className="hero-form-email-button-animation">
+                        <div className="hero-form-email-button-bar" style={{ animationDelay: '0.3s', animationDuration: '1.5s' }} />
+                        <div className="hero-form-email-button-bar hero-form-email-button-bar-tall" style={{ animationDelay: '0.4s', animationDuration: '1.1s' }} />
+                        <div className="hero-form-email-button-bar hero-form-email-button-bar-medium" style={{ animationDelay: '0.5s', animationDuration: '0.9s' }} />
+                        <div className="hero-form-email-button-bar hero-form-email-button-bar-small" style={{ animationDelay: '0.6s', animationDuration: '1.3s' }} />
+                      </div>
+                    )}
+                  </button>
+                </div>
+                {emailError && (
+                  <div className="hero-form-email-error">
+                    {emailError}
                   </div>
                 )}
-              </button>
-            </div>
-            {emailError && (
-              <div className="hero-form-email-error">
-                {emailError}
-              </div>
+              </>
             )}
           </div>
         </div>
