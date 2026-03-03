@@ -73,6 +73,7 @@ export const sendCalculatorDataWithEmail = async (data) => {
       grossTicketSales: data.grossTicketSales,
       advanceAmount: data.advanceAmount,
       email: data.email,
+      customerType: data.customerType,
       timestamp: new Date().toISOString(),
     }
 
