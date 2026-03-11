@@ -29,7 +29,7 @@ export default function Hero() {
   // Use minimum of 50 for events calculation if >= 50
   const eventsForCalculation = numberOfEvents >= 50 ? 50 : numberOfEvents
 
-  // Calculate advance amount (depends on customer type: festival 25%, promoter 20%, venue 10%)
+  // Calculate advance amount from the pre-qual matrix based on score band and customer type.
   useEffect(() => {
     const result = calculateAdvance(yearsForCalculation, eventsForCalculation, grossTicketSales, customerType)
     setAdvanceResult(result)
@@ -44,7 +44,7 @@ export default function Hero() {
   // Handle Start now click - send data to HubSpot with email
   const handleStartNowClick = async () => {
     if (!customerType) {
-      setEmailError('Please select Promoter, Venue or Festival.')
+      setEmailError('Please select a business type.')
       return
     }
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
@@ -217,6 +217,27 @@ export default function Hero() {
           <div className="hero-form">
             <h3 className="hero-form-title">Get Funded</h3>
             <div className="hero-form-field hero-form-customer-type">
+              <label className="hero-form-customer-type-label" htmlFor="customer-type-select">
+              What is your business?
+              </label>
+             {/* <select
+                id="customer-type-select"
+                className="hero-form-customer-type-select"
+                value={customerType ?? ''}
+                onChange={(e) => {
+                  const v = e.target.value
+                  setCustomerType(v || null)
+                  setEmailError('')
+                }}
+                aria-label="Business type"
+              >
+                <option value="">Select your business type</option>
+                <option value="promoter">Promoter</option>
+                <option value="venue">Venue</option>
+                <option value="festival">Festival</option>
+                <option value="others">Others</option>
+              </select>*/}
+              {/* Version avec les 4 boutons (commentée pour comparer avec le menu déroulant) */}
               <div className="hero-form-customer-type-buttons">
                 {['Promoter', 'Venue', 'Festival'].map((label) => {
                   const value = label.toLowerCase()
@@ -234,10 +255,21 @@ export default function Hero() {
                     </button>
                   )
                 })}
+                <button
+                  type="button"
+                  className={`hero-form-customer-type-btn hero-form-customer-type-btn-others ${customerType === 'others' ? 'hero-form-customer-type-btn-selected' : ''}`}
+                  onClick={() => {
+                    setCustomerType('others')
+                    setEmailError('')
+                  }}
+                >
+                  Other
+                </button>
               </div>
+              
             </div>
             <div className="hero-form-field">
-              <label>How long have you been in business?</label>
+              <label>How long have you been operating?</label>
               <input 
                 type="range" 
                 min="1" 

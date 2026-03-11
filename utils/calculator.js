@@ -26,25 +26,73 @@ const numberOfEventsRiskScore = (events) => {
 
 /**
  * Pre Qual Advance Percentages
- * Returns the maximum advance percentage based on total risk score
+ * Returns the maximum advance percentage based on total risk score and customer type.
+ * Source: Application Offer - New Model 3-9-26.csv (Pre Qual section).
  */
-const getAdvancePercentage = (totalRiskScore) => {
-  if (totalRiskScore >= 0 && totalRiskScore <= 5) return 10.00
-  if (totalRiskScore >= 5.1 && totalRiskScore <= 11) return 7.50
-  if (totalRiskScore >= 11.1 && totalRiskScore <= 15) return 5.00
-  if (totalRiskScore >= 15 && totalRiskScore <= 20) return 2.50
-  return 0 // No advance if score is too high
+const PRE_QUAL_ADVANCE_MATRIX = [
+  {
+    min: 0,
+    max: 5,
+    percentages: {
+      venue: 14.00,
+      promoter: 20.00,
+      festival: 26.00,
+    },
+  },
+  {
+    min: 5.1,
+    max: 11,
+    percentages: {
+      venue: 11.00,
+      promoter: 15.00,
+      festival: 19.00,
+    },
+  },
+  {
+    min: 11.1,
+    max: 15,
+    percentages: {
+      venue: 8.00,
+      promoter: 10.00,
+      festival: 12.00,
+    },
+  },
+  {
+    min: 15,
+    max: 20,
+    percentages: {
+      venue: 5.00,
+      promoter: 5.00,
+      festival: 5.00,
+    },
+  },
+]
+
+const normalizeCustomerType = (customerType) => {
+  if (customerType === 'festival' || customerType === 'promoter' || customerType === 'venue') {
+    return customerType
+  }
+
+  return 'venue'
 }
 
-/** Max advance % by customer type: Festival 25%, Promoter 20%, Venue 10% */
-const CUSTOMER_TYPE_CAP = { festival: 25, promoter: 20, venue: 10 }
+const getAdvancePercentage = (totalRiskScore, customerType) => {
+  const normalizedCustomerType = normalizeCustomerType(customerType)
+  const matchingBand = PRE_QUAL_ADVANCE_MATRIX.find(
+    ({ min, max }) => totalRiskScore >= min && totalRiskScore <= max
+  )
+
+  if (!matchingBand) return 0
+
+  return matchingBand.percentages[normalizedCustomerType] ?? matchingBand.percentages.venue
+}
 
 /**
  * Calculate the advance amount
  * @param {number} yearsInBusiness - Years the company has been operating
  * @param {number} numberOfEvents - Number of events promoted per year
  * @param {number} grossTicketSales - Gross ticket sales per year
- * @param {'promoter'|'venue'|'festival'} [customerType] - Customer type (cap: promoter 20%, venue 10%, festival 25%)
+ * @param {'promoter'|'venue'|'festival'|'others'} [customerType] - Customer type (others uses venue scale)
  * @returns {object} Object containing risk scores, advance percentage, and calculated advance
  */
 export const calculateAdvance = (yearsInBusiness, numberOfEvents, grossTicketSales, customerType) => {
@@ -55,11 +103,8 @@ export const calculateAdvance = (yearsInBusiness, numberOfEvents, grossTicketSal
   // Total risk score
   const totalRiskScore = yearsRiskScore + eventsRiskScore
   
-  // Base advance % from risk; cap by customer type if provided
-  let advancePercentage = getAdvancePercentage(totalRiskScore)
-  if (customerType && CUSTOMER_TYPE_CAP[customerType] != null) {
-    advancePercentage = Math.min(advancePercentage, CUSTOMER_TYPE_CAP[customerType])
-  }
+  // Advance % from pre-qual score band and customer type.
+  const advancePercentage = getAdvancePercentage(totalRiskScore, customerType)
   
   // Advance amount (capped at $500,000 max)
   const calculatedAdvance = grossTicketSales * (advancePercentage / 100)
@@ -73,4 +118,3 @@ export const calculateAdvance = (yearsInBusiness, numberOfEvents, grossTicketSal
     advanceAmount: Math.round(advanceAmount)
   }
 }
-
