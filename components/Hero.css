@@ -246,6 +246,106 @@
   margin-bottom: 16px;
 }
 
+.hero-form-customer-type {
+  height: auto;
+  min-height: 48px;
+  margin-bottom: 0;
+}
+
+.hero-form-customer-type-label {
+  height: auto;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+
+.hero-form-customer-type-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8L9.5 4.5' stroke='rgba(255,255,255,0.8)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.hero-form-customer-type-select:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-form-customer-type-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-form-customer-type-select option {
+  background: #1f2937;
+  color: #FFFFFF;
+}
+
+.hero-form-customer-type-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.hero-form-customer-type-btn,
+.hero-form-customer-type-btn-others {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-form-customer-type-btn {
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-form-customer-type-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+  .hero-form-customer-type-btn,
+  .hero-form-customer-type-btn-others {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+}
+
+.hero-form-customer-type-btn-selected {
+  background: rgba(255, 255, 255, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .hero-form-field label {
   height: 20px;
   font-family: 'Inter', sans-serif;
@@ -986,9 +1086,7 @@
     text-align: center;
   }
 
-  .hero-form-field {
-    margin-bottom: 20px;
-  }
+  
 
   .hero-form-field label {
     font-size: 14px;
