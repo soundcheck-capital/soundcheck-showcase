@@ -11,6 +11,7 @@ const MAKE_WEBHOOK_URL = process.env.NEXT_PUBLIC_MAKE_WEBHOOK_URL || 'https://ho
  * @param {number} data.numberOfEvents - Number of events per year
  * @param {number} data.grossTicketSales - Gross ticket sales per year
  * @param {number} data.advanceAmount - Calculated advance amount
+ * @param {string} [data.customerType] - Selected business type
  * @returns {Promise<Object>} Response from the webhook
  */
 export const sendCalculatorDataToHubSpot = async (data) => {
@@ -25,6 +26,7 @@ export const sendCalculatorDataToHubSpot = async (data) => {
       numberOfEvents: data.numberOfEvents,
       grossTicketSales: data.grossTicketSales,
       advanceAmount: data.advanceAmount,
+      customerType: data.customerType,
       timestamp: new Date().toISOString(),
     }
 
@@ -58,6 +60,7 @@ const EMAIL_WEBHOOK_URL = 'https://hook.us1.make.com/83e6qglv3yxwp9v31qegl1wff52
  * @param {number} data.grossTicketSales - Gross ticket sales per year
  * @param {number} data.advanceAmount - Calculated advance amount
  * @param {string} data.email - User email address
+ * @param {string} [data.customerType] - Selected business type
  * @returns {Promise<Object>} Response from the webhook
  */
 export const sendCalculatorDataWithEmail = async (data) => {
