@@ -218,7 +218,7 @@ export default function Hero() {
             <h3 className="hero-form-title">Get Funded</h3>
             <div className="hero-form-field hero-form-customer-type">
               <label className="hero-form-customer-type-label" htmlFor="customer-type-select">
-              What type of business do you operate?
+              What type of business do you run?
               </label>
              {/* <select
                 id="customer-type-select"
