@@ -11,6 +11,7 @@ export default function Hero() {
   const [yearsInBusiness, setYearsInBusiness] = useState(5)
   const [numberOfEvents, setNumberOfEvents] = useState(25)
   const [grossTicketSales, setGrossTicketSales] = useState(2500000)
+  const [customerType, setCustomerType] = useState(null) // 'promoter' | 'venue' | 'festival'
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -20,7 +21,7 @@ export default function Hero() {
   const [advanceResult, setAdvanceResult] = useState(() => {
     const yearsForCalc = 5 >= 10 ? 10 : 5
     const eventsForCalc = 25 >= 50 ? 50 : 25
-    return calculateAdvance(yearsForCalc, eventsForCalc, 2500000)
+    return calculateAdvance(yearsForCalc, eventsForCalc, 2500000, null)
   })
 
   // Use minimum of 10 for years calculation if >= 10
@@ -28,11 +29,11 @@ export default function Hero() {
   // Use minimum of 50 for events calculation if >= 50
   const eventsForCalculation = numberOfEvents >= 50 ? 50 : numberOfEvents
 
-  // Calculate advance amount
+  // Calculate advance amount from the pre-qual matrix based on score band and customer type.
   useEffect(() => {
-    const result = calculateAdvance(yearsForCalculation, eventsForCalculation, grossTicketSales)
+    const result = calculateAdvance(yearsForCalculation, eventsForCalculation, grossTicketSales, customerType)
     setAdvanceResult(result)
-  }, [yearsInBusiness, numberOfEvents, grossTicketSales, yearsForCalculation, eventsForCalculation])
+  }, [yearsInBusiness, numberOfEvents, grossTicketSales, yearsForCalculation, eventsForCalculation, customerType])
 
   // Handle Book a call click - open HubSpot link only
   const handleBookCallClick = (e) => {
@@ -42,6 +43,10 @@ export default function Hero() {
 
   // Handle Start now click - send data to HubSpot with email
   const handleStartNowClick = async () => {
+    if (!customerType) {
+      setEmailError('Please select a business type.')
+      return
+    }
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       setEmailError('Please enter a valid email address.')
       return
@@ -51,7 +56,7 @@ export default function Hero() {
     setIsLoading(true)
     setIsSuccess(false)
 
-    if (advanceResult) {
+    if (advanceResult && customerType) {
       try {
         console.log('Sending calculator data with email to HubSpot...', {
           yearsInBusiness,
@@ -59,6 +64,7 @@ export default function Hero() {
           grossTicketSales,
           advanceAmount: advanceResult.advanceAmount,
           email,
+          customerType,
         })
 
         const result = await sendCalculatorDataWithEmail({
@@ -67,6 +73,7 @@ export default function Hero() {
           grossTicketSales,
           advanceAmount: advanceResult.advanceAmount,
           email,
+          customerType,
         })
 
         if (result.success == true) {
@@ -209,8 +216,60 @@ export default function Hero() {
         <div className="hero-left">
           <div className="hero-form">
             <h3 className="hero-form-title">Get Funded</h3>
+            <div className="hero-form-field hero-form-customer-type">
+              <label className="hero-form-customer-type-label" htmlFor="customer-type-select">
+              What type of business do you run?
+              </label>
+             {/* <select
+                id="customer-type-select"
+                className="hero-form-customer-type-select"
+                value={customerType ?? ''}
+                onChange={(e) => {
+                  const v = e.target.value
+                  setCustomerType(v || null)
+                  setEmailError('')
+                }}
+                aria-label="Business type"
+              >
+                <option value="">Select your business type</option>
+                <option value="promoter">Promoter</option>
+                <option value="venue">Venue</option>
+                <option value="festival">Festival</option>
+                <option value="others">Others</option>
+              </select>*/}
+              {/* Version avec les 4 boutons (commentée pour comparer avec le menu déroulant) */}
+              <div className="hero-form-customer-type-buttons">
+                {['Promoter', 'Venue', 'Festival'].map((label) => {
+                  const value = label.toLowerCase()
+                  return (
+                    <button
+                      key={value}
+                      type="button"
+                      className={`hero-form-customer-type-btn ${customerType === value ? 'hero-form-customer-type-btn-selected' : ''}`}
+                      onClick={() => {
+                        setCustomerType(value)
+                        setEmailError('')
+                      }}
+                    >
+                      {label}
+                    </button>
+                  )
+                })}
+                <button
+                  type="button"
+                  className={`hero-form-customer-type-btn hero-form-customer-type-btn-others ${customerType === 'others' ? 'hero-form-customer-type-btn-selected' : ''}`}
+                  onClick={() => {
+                    setCustomerType('others')
+                    setEmailError('')
+                  }}
+                >
+                  Other
+                </button>
+              </div>
+              
+            </div>
             <div className="hero-form-field">
-              <label>How long have you been in business?</label>
+              <label>How long have you been operating?</label>
               <input 
                 type="range" 
                 min="1" 
@@ -275,7 +334,7 @@ export default function Hero() {
                   <button
                     className={`hero-form-email-button ${isLoading ? 'hero-form-email-button-loading' : ''}`}
                     onClick={handleStartNowClick}
-                    disabled={isLoading}
+                    disabled={isLoading || !customerType}
                   >
                     {isLoading ? (
                       <div className="hero-form-email-button-spinner"></div>
