@@ -1,15 +1,15 @@
-const DEFAULT_CONFIRM_PATH = '/api/advance-requests/confirm'
+const DEFAULT_WEBHOOK_URL =
+  'https://soundcheck-capital.app.n8n.cloud/webhook/advance-request-confirm'
 
 export async function confirmAdvanceRequest(token) {
-  const backendUrl = process.env.APPLICATION_FORM_BACKEND_URL?.replace(/\/$/, '')
-  const confirmPath =
-    process.env.APPLICATION_FORM_BACKEND_CONFIRM_PATH || DEFAULT_CONFIRM_PATH
+  const webhookUrl =
+    process.env.N8N_ADVANCE_REQUEST_WEBHOOK_URL?.trim() || DEFAULT_WEBHOOK_URL
 
-  if (!backendUrl) {
+  if (!webhookUrl) {
     return { status: 'backend_unavailable' }
   }
 
-  const response = await fetch(`${backendUrl}${confirmPath}`, {
+  const response = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ token }),
