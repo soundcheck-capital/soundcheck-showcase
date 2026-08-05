@@ -1,0 +1,100 @@
+.qbo {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  background-image: url('/images/concert1.png');
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+}
+
+.qbo-card {
+  max-width: 32rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.qbo-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.qbo-icon--neutral {
+  background: #E5E7EB;
+  color: #4B5563;
+}
+
+.qbo-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.qbo-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.qbo-card p {
+  font-size: 15px;
+  line-height: 24px;
+  color: #374151;
+  margin: 0 0 16px 0;
+}
+
+.qbo-card ol {
+  text-align: left;
+  margin: 0 0 16px 0;
+  padding-left: 24px;
+}
+
+.qbo-card li {
+  font-size: 15px;
+  line-height: 24px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.qbo-realm {
+  font-size: 13px;
+  color: #6B7280;
+}
+
+.qbo-card a {
+  color: #B45309;
+  text-decoration: none;
+}
+
+.qbo-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .qbo-card {
+    padding: 24px;
+  }
+
+  .qbo-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
