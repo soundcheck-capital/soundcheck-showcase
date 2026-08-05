@@ -1,6 +1,0 @@
-# Intuit's connect/reconnect URL. Kicks off the QBO OAuth flow, which is driven
-# by n8n — there is no page to render, so this is a plain 302 to the webhook.
-# TODO: confirm the webhook path. This follows the naming of the existing
-# advance-request-confirm webhook (see services/requestAdvanceConfirm.js) but
-# has not been verified against the n8n workflow that starts the OAuth consent.
-/qbo/connect  https://soundcheck-capital.app.n8n.cloud/webhook/qbo-oauth-connect  302!
