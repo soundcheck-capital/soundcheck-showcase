@@ -2,13 +2,9 @@
 
 import { useState } from 'react'
 import './Footer.css'
-import TermsModal from './TermsModal'
-import PrivacyModal from './PrivacyModal'
 import AboutModal from './AboutModal'
 
 export default function Footer() {
-  const [isTermsOpen, setIsTermsOpen] = useState(false)
-  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
 
   const handleLinkClick = (e, targetId) => {
@@ -45,8 +41,9 @@ export default function Footer() {
             <div className="footer-column">
               <h4 className="footer-heading">Legal</h4>
               <ul className="footer-links">
-                <li><button className="footer-link-button" onClick={() => setIsPrivacyOpen(true)}>Privacy</button></li>
-                <li><button className="footer-link-button" onClick={() => setIsTermsOpen(true)}>Terms</button></li>
+                <li><a href="/privacy-policy">Privacy</a></li>
+                <li><a href="/terms-of-service">Terms</a></li>
+                <li><a href="/end-user-license-agreement">License Agreement</a></li>
               </ul>
             </div>
           </div>
@@ -62,8 +59,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
-      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
       <AboutModal isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
     </>
   )
