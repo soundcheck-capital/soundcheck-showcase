@@ -27,34 +27,34 @@ const numberOfEventsRiskScore = (events) => {
 /**
  * Pre Qual Advance Percentages
  * Returns the maximum advance percentage based on total risk score and customer type.
- * Source: Application Offer - New Model 3-9-26.csv (Pre Qual section).
+ * Source: "Application Offer" Google Sheet, "new model" tab (Pre-Qual + Express, 8/24/26).
  */
 const PRE_QUAL_ADVANCE_MATRIX = [
   {
     min: 0,
     max: 5,
     percentages: {
-      venue: 14.00,
+      venue: 20.00,
       promoter: 20.00,
-      festival: 26.00,
+      festival: 25.00,
     },
   },
   {
     min: 5.1,
     max: 11,
     percentages: {
-      venue: 11.00,
+      venue: 15.00,
       promoter: 15.00,
-      festival: 19.00,
+      festival: 18.00,
     },
   },
   {
     min: 11.1,
     max: 15,
     percentages: {
-      venue: 8.00,
+      venue: 10.00,
       promoter: 10.00,
-      festival: 12.00,
+      festival: 10.00,
     },
   },
   {
@@ -106,9 +106,9 @@ export const calculateAdvance = (yearsInBusiness, numberOfEvents, grossTicketSal
   // Advance % from pre-qual score band and customer type.
   const advancePercentage = getAdvancePercentage(totalRiskScore, customerType)
   
-  // Advance amount (capped at $500,000 max)
+  // Advance amount (capped at $1,000,000 max)
   const calculatedAdvance = grossTicketSales * (advancePercentage / 100)
-  const advanceAmount = Math.min(calculatedAdvance, 500000)
+  const advanceAmount = Math.min(calculatedAdvance, 1000000)
   
   return {
     yearsRiskScore,

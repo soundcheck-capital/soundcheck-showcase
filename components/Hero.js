@@ -142,7 +142,7 @@ export default function Hero() {
             Get Funding. Promote Shows. Grow Your Business.
           </h1>
           <p className="hero-description">
-          Advances from $5,000 to $500,000 for promoters, festivals, venues, sports teams and event organizers.
+          Advances from $5,000 to $1,000,000 for promoters, festivals, venues, sports teams and event organizers.
           </p>
           <div className="hero-features">
             <div className="hero-feature">
