@@ -111,8 +111,8 @@ export default function Hero() {
     // Round to nearest 100K for all values
     const adjustedValue = Math.round(value / 100000) * 100000
     
-    // Ensure value is within bounds (min 100K, max 5M)
-    const finalValue = Math.max(100000, Math.min(adjustedValue, 5000000))
+    // Ensure value is within bounds (min 100K, max 10M)
+    const finalValue = Math.max(100000, Math.min(adjustedValue, 10000000))
     
     setGrossTicketSales(finalValue)
   }
@@ -301,14 +301,14 @@ export default function Hero() {
               <input 
                 type="range" 
                 min="100000" 
-                max="5000000"
+                max="10000000"
                 step="100000"
                 value={grossTicketSales} 
                 onChange={handleGrossTicketSalesChange}
                 className="hero-form-slider" 
               />
               <div className="hero-form-labels">
-                <span className="hero-form-value">{grossTicketSales >= 5000000 ? '$5M+' : formatCurrency(grossTicketSales)}</span>
+                <span className="hero-form-value">{grossTicketSales >= 10000000 ? '$10M+' : formatCurrency(grossTicketSales)}</span>
               </div>
             </div>
             {isSuccess ? (
