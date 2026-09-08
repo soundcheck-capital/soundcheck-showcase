@@ -1,23 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import './Header.css'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isOverLightSection, setIsOverLightSection] = useState(false)
-
-  useEffect(() => {
-    const cta = document.getElementById('cta')
-    if (!cta) return
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsOverLightSection(entry.isIntersecting),
-      { rootMargin: '-56px 0px 0px 0px', threshold: 0 }
-    )
-    observer.observe(cta)
-    return () => observer.disconnect()
-  }, [])
 
   const handleLinkClick = (e, targetId) => {
     e.preventDefault()
@@ -33,7 +21,7 @@ export default function Header() {
   }
 
   return (
-    <header className={`header ${isOverLightSection ? 'header--over-light' : ''}`}>
+    <header className="header">
       <div className="header-container">
         <Link href="/" className="logo">
           <img 

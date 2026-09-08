@@ -1,8 +1,9 @@
 /**
- * Service to send calculator data to HubSpot via Make.com webhook
+ * Service to send website form data (simulator + contact form) to the n8n webhook,
+ * which emails the prospect/team and creates the HubSpot contact + deal (Website Inquiry stage).
  */
 
-const MAKE_WEBHOOK_URL = process.env.NEXT_PUBLIC_MAKE_WEBHOOK_URL || 'https://hook.us1.make.com/83e6qglv3yxwp9v31qegl1wff52bgidq'
+const MAKE_WEBHOOK_URL = process.env.NEXT_PUBLIC_MAKE_WEBHOOK_URL || 'https://soundcheck-capital.app.n8n.cloud/webhook/api/website'
 
 /**
  * Send calculator data to HubSpot via Make.com
@@ -50,7 +51,52 @@ export const sendCalculatorDataToHubSpot = async (data) => {
   }
 }
 
-const EMAIL_WEBHOOK_URL = 'https://hook.us1.make.com/83e6qglv3yxwp9v31qegl1wff52bgidq'
+/**
+ * Send contact form data to the Make.com webhook
+ * @param {Object} data - Contact form data
+ * @param {string} data.name - Contact name
+ * @param {string} data.businessName - Business name
+ * @param {string} data.businessType - Type of business
+ * @param {string} data.email - Contact email address
+ * @param {string} data.message - Message
+ * @returns {Promise<Object>} Response from the webhook
+ */
+export const sendContactForm = async (data) => {
+  if (!MAKE_WEBHOOK_URL) {
+    console.warn('Make.com webhook URL not configured')
+    return { success: false, error: 'Webhook URL not configured' }
+  }
+
+  try {
+    const payload = {
+      formType: 'contact',
+      name: data.name,
+      businessName: data.businessName,
+      businessType: data.businessType,
+      email: data.email,
+      message: data.message,
+      timestamp: new Date().toISOString(),
+    }
+
+    const response = await fetch(MAKE_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const result = await response.json().catch(() => ({ success: true }))
+    return { success: true, data: result }
+  } catch (error) {
+    console.error('Error sending contact form:', error)
+    return { success: false, error: error.message }
+  }
+}
 
 /**
  * Send calculator data with email to webhook
@@ -64,7 +110,7 @@ const EMAIL_WEBHOOK_URL = 'https://hook.us1.make.com/83e6qglv3yxwp9v31qegl1wff52
  * @returns {Promise<Object>} Response from the webhook
  */
 export const sendCalculatorDataWithEmail = async (data) => {
-  if (!EMAIL_WEBHOOK_URL) {
+  if (!MAKE_WEBHOOK_URL) {
     console.warn('Email webhook URL not configured')
     return { success: false, error: 'Webhook URL not configured' }
   }
@@ -80,7 +126,7 @@ export const sendCalculatorDataWithEmail = async (data) => {
       timestamp: new Date().toISOString(),
     }
 
-    const response = await fetch(EMAIL_WEBHOOK_URL, {
+    const response = await fetch(MAKE_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
