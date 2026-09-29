@@ -109,7 +109,7 @@ export const sendContactForm = async (data) => {
  * @param {string} [data.customerType] - Selected business type
  * @param {string} data.firstName - Contact first name
  * @param {string} data.lastName - Contact last name
- * @param {string} [data.website] - Company website (optional)
+ * @param {string} data.website - Company website
  * @returns {Promise<Object>} Response from the webhook
  */
 export const sendCalculatorDataWithEmail = async (data) => {
