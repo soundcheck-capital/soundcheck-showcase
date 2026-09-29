@@ -50,6 +50,10 @@ export default function Hero() {
       setEmailError('Please enter your first and last name.')
       return
     }
+    if (!/^(https?:\/\/)?(www\.)?[\w-]+(\.[\w-]+)+/i.test(website.trim())) {
+      setEmailError('Please enter your company website.')
+      return
+    }
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       setEmailError('Please enter a valid email address.')
       return
@@ -362,11 +366,14 @@ export default function Hero() {
                   <div className="hero-form-email">
                     <input
                       type="url"
-                      placeholder="Company website (optional)"
+                      placeholder="Company website"
                       autoComplete="url"
                       aria-label="Company website"
                       value={website}
-                      onChange={(e) => setWebsite(e.target.value)}
+                      onChange={(e) => {
+                        setWebsite(e.target.value)
+                        setEmailError('')
+                      }}
                       className="hero-form-email-input"
                     />
                   </div>
