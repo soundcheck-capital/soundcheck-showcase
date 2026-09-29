@@ -13,6 +13,9 @@ export default function Hero() {
   const [numberOfEvents, setNumberOfEvents] = useState(25)
   const [grossTicketSales, setGrossTicketSales] = useState(2500000)
   const [customerType, setCustomerType] = useState(null) // 'promoter' | 'venue' | 'festival'
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [website, setWebsite] = useState('')
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -43,6 +46,10 @@ export default function Hero() {
       setEmailError('Please select a business type.')
       return
     }
+    if (!firstName.trim() || !lastName.trim()) {
+      setEmailError('Please enter your first and last name.')
+      return
+    }
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       setEmailError('Please enter a valid email address.')
       return
@@ -70,6 +77,9 @@ export default function Hero() {
           advanceAmount: advanceResult.advanceAmount,
           email,
           customerType,
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+          website: website.trim(),
         })
 
         if (result.success == true) {
@@ -77,6 +87,9 @@ export default function Hero() {
           setIsLoading(false)
           setIsSuccess(true)
           setEmail('')
+          setFirstName('')
+          setLastName('')
+          setWebsite('')
           setTimeout(() => setIsSuccess(false), SUCCESS_COOLDOWN_MS)
         } else {
           throw new Error(`Request failed with status ${result.status}`)
@@ -138,7 +151,7 @@ export default function Hero() {
             Get Funding. Promote Shows. Grow Your Business.
           </h1>
           <p className="hero-description">
-          Advances from $5,000 to $1,000,000 for promoters, festivals, venues, sports teams and event organizers.
+          Advances from $10,000 to $1,000,000 for promoters, festivals, venues, sports teams and event organizers.
           </p>
           <div className="hero-features">
             <div className="hero-feature">
@@ -315,6 +328,49 @@ export default function Hero() {
             ) : (
               <>
                 <span className="hero-form-email-text">Unlock your offer with your email</span>
+                <div className="hero-form-contact">
+                  <div className="hero-form-contact-row">
+                    <div className="hero-form-email">
+                      <input
+                        type="text"
+                        placeholder="First name"
+                        autoComplete="given-name"
+                        aria-label="First name"
+                        value={firstName}
+                        onChange={(e) => {
+                          setFirstName(e.target.value)
+                          setEmailError('')
+                        }}
+                        className="hero-form-email-input"
+                      />
+                    </div>
+                    <div className="hero-form-email">
+                      <input
+                        type="text"
+                        placeholder="Last name"
+                        autoComplete="family-name"
+                        aria-label="Last name"
+                        value={lastName}
+                        onChange={(e) => {
+                          setLastName(e.target.value)
+                          setEmailError('')
+                        }}
+                        className="hero-form-email-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="hero-form-email">
+                    <input
+                      type="url"
+                      placeholder="Company website (optional)"
+                      autoComplete="url"
+                      aria-label="Company website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      className="hero-form-email-input"
+                    />
+                  </div>
+                </div>
                 <div className="hero-form-email" suppressHydrationWarning>
                   <input
                     type="email"
