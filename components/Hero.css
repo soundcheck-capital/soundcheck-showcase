@@ -431,6 +431,27 @@
   overflow: hidden;
 }
 
+.hero-form-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.hero-form-contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.hero-form-contact .hero-form-email {
+  padding: 12px 14px;
+}
+
+.hero-form-contact .hero-form-email-input {
+  min-width: 0;
+}
+
 .hero-form-email-text {
   display: block;
   margin-top: 20px;

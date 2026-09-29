@@ -107,6 +107,9 @@ export const sendContactForm = async (data) => {
  * @param {number} data.advanceAmount - Calculated advance amount
  * @param {string} data.email - User email address
  * @param {string} [data.customerType] - Selected business type
+ * @param {string} data.firstName - Contact first name
+ * @param {string} data.lastName - Contact last name
+ * @param {string} [data.website] - Company website (optional)
  * @returns {Promise<Object>} Response from the webhook
  */
 export const sendCalculatorDataWithEmail = async (data) => {
@@ -123,6 +126,9 @@ export const sendCalculatorDataWithEmail = async (data) => {
       advanceAmount: data.advanceAmount,
       email: data.email,
       customerType: data.customerType,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      website: data.website,
       timestamp: new Date().toISOString(),
     }
 
