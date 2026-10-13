@@ -12,6 +12,9 @@ const nextConfig = {
     return [
       { source: '/terms', destination: '/terms-of-service', permanent: true },
       { source: '/tos', destination: '/terms-of-service', permanent: true },
+      // Shareable short link to the Express form (separate app). Temporary so
+      // browsers don't cache it if the form URL ever changes.
+      { source: '/apply', destination: 'https://express-application.soundcheckcapital.com/express', permanent: false },
     ]
   },
 }
