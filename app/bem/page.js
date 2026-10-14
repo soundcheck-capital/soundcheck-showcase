@@ -12,8 +12,7 @@ export default function BemPage() {
     <>
       {/* The widget brings its own full-height background and padding. */}
       <div data-soundcheck-widget />
-      {/* ponytail: default theme; add ?theme=<partner> once BEM brand assets exist */}
-      <Script src="https://finance.soundcheckcapital.com/widget.js?appearance=single-page" />
+      <Script src="https://finance.soundcheckcapital.com/widget.js?appearance=single-page&theme=bem" />
     </>
   )
 }
