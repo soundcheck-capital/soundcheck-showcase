@@ -9,10 +9,11 @@ export const metadata = {
 
 export default function BemPage() {
   return (
-    <div style={{ padding: '32px 0' }}>
+    <>
+      {/* The widget brings its own full-height background and padding. */}
       <div data-soundcheck-widget />
       {/* ponytail: default theme; add ?theme=<partner> once BEM brand assets exist */}
       <Script src="https://finance.soundcheckcapital.com/widget.js?appearance=single-page" />
-    </div>
+    </>
   )
 }
