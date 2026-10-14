@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Header from './Header'
 
-const STANDALONE_ROUTES = ['/docusign-success', '/request-advance/confirm', '/qbo']
+const STANDALONE_ROUTES = ['/docusign-success', '/request-advance/confirm', '/qbo', '/bem']
 
 export default function LayoutClient({ children }) {
   const pathname = usePathname()
