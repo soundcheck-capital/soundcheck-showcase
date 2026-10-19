@@ -1,13 +1,15 @@
+import ExpressEmbed from '../../components/ExpressEmbed'
+
 // Unlisted partner page: noindex, not in the sitemap, no nav links.
-// Design approved by BEM (Steve, Slack #product 1792019160.628759). The CTAs go to the
-// Express form through /apply, which keeps ?partner=bem: that tag lands in HubSpot
-// (deal.referral_partner) and in the Slack ping.
+// Design approved by BEM (Steve, Slack #product 1792019160.628759). The Express form is
+// embedded with ?partner=bem: that tag lands in HubSpot (deal.referral_partner) and Slack.
 export const metadata = {
   title: 'Campaign financing for BEM clients | SoundCheck Capital',
   robots: { index: false, follow: false },
 }
 
-const APPLY_URL = '/apply?partner=bem'
+// Through /apply (next.config.js redirect, keeps the query): if the form moves, one line changes.
+const FORM_URL = '/apply?partner=bem'
 
 const section = { maxWidth: 960, margin: '0 auto', padding: '0 24px 80px', display: 'flex', flexDirection: 'column' }
 const rule = { width: 120, height: 1, background: '#C0B30B' }
@@ -55,7 +57,7 @@ export default function BemPage() {
           <span style={pill}>Or both</span>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 20, paddingTop: 8 }}>
-          <a href={APPLY_URL} style={cta}>See what you could get →</a>
+          <a href="#apply" style={cta}>See what you could get →</a>
           <span style={{ fontSize: 15, color: '#E8DDF3' }}>Takes a few minutes · No obligation</span>
         </div>
       </section>
@@ -76,7 +78,6 @@ export default function BemPage() {
         </ol>
       </section>
 
-      {/* The design's embed slot is a link: the form opens on its own page (Sami, 2026-10-19). */}
       <section id="apply" style={{ ...section, gap: 24 }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={rule} />
@@ -85,9 +86,7 @@ export default function BemPage() {
             A few quick questions about your business. We&apos;ll be in touch within 2 business days.
           </p>
         </div>
-        <div>
-          <a href={APPLY_URL} style={cta}>Start your application →</a>
-        </div>
+        <ExpressEmbed src={FORM_URL} title="SoundCheck Capital Express application" />
         <p style={{ margin: 0, fontSize: 16, color: '#F3EEF8' }}>
           Questions? Ask your BEM rep, or email Steve at{' '}
           <a href="mailto:steve@soundcheckcapital.com" style={link}>steve@soundcheckcapital.com</a>
