@@ -1,15 +1,16 @@
 import ExpressEmbed from '../../components/ExpressEmbed'
 
 // Unlisted partner page: noindex, not in the sitemap, no nav links.
-// Design approved by BEM (Steve, Slack #product 1792019160.628759). The Express form is
-// embedded with ?partner=bem: that tag lands in HubSpot (deal.referral_partner) and Slack.
+// Design approved by BEM (Steve, Slack #product 1792019160.628759). Embeds the light BEM form
+// (no bank connection, asks for the BEM quote): its n8n webhook creates contact + company + deal
+// in HubSpot tagged referral_partner=bem. The Express application is sent after the intro call.
 export const metadata = {
   title: 'Campaign financing for BEM clients | SoundCheck Capital',
   robots: { index: false, follow: false },
 }
 
-// Through /apply (next.config.js redirect, keeps the query): if the form moves, one line changes.
-const FORM_URL = '/apply?partner=bem'
+// Posts its height like the Express form does, so ExpressEmbed sizes the iframe.
+const FORM_URL = 'https://finance.soundcheckcapital.com/bem/'
 
 const section = { maxWidth: 960, margin: '0 auto', padding: '0 24px 80px', display: 'flex', flexDirection: 'column' }
 const rule = { width: 120, height: 1, background: '#C0B30B' }
@@ -86,7 +87,7 @@ export default function BemPage() {
             A few quick questions about your business. We&apos;ll be in touch within 2 business days.
           </p>
         </div>
-        <ExpressEmbed src={FORM_URL} title="SoundCheck Capital Express application" />
+        <ExpressEmbed src={FORM_URL} title="SoundCheck Capital application for BEM clients" />
         <p style={{ margin: 0, fontSize: 16, color: '#F3EEF8' }}>
           Questions? Ask your BEM rep, or email Steve at{' '}
           <a href="mailto:steve@soundcheckcapital.com" style={link}>steve@soundcheckcapital.com</a>
