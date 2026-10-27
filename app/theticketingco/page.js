@@ -1,15 +1,17 @@
 import ExpressEmbed from '../../components/ExpressEmbed'
 
 // Unlisted partner page: noindex, not in the sitemap, no nav links.
-// Design from Steve (Slack C08RK7YDX3L 1792618666.036389), same layout as /bem. Embeds the regular
-// Express application with ?partner=theticketingco, which lands in HubSpot (deal.referral_partner) and Slack.
+// Design from Steve (Slack C08RK7YDX3L 1792618666.036389), same layout as /bem. Embeds the short
+// Ticketing Co. form, not the Express application: its ticketing-company question lists their competitors
+// (Slack 1793041252.240419). The n8n website webhook tags the HubSpot deal referral_partner=theticketingco
+// with the funding requested as the amount.
 export const metadata = {
   title: 'Funding for The Ticketing Co. organizers | SoundCheck Capital',
   robots: { index: false, follow: false },
 }
 
-// Through /apply (next.config.js redirect, keeps the query): if the form moves, one line changes.
-const FORM_URL = '/apply?partner=theticketingco'
+// Posts its height like the Express form does, so ExpressEmbed sizes the iframe.
+const FORM_URL = 'https://finance.soundcheckcapital.com/theticketingco/'
 
 const section = { maxWidth: 960, margin: '0 auto', padding: '0 24px 80px', display: 'flex', flexDirection: 'column' }
 const rule = { width: 120, height: 1, background: '#6184C3' }
@@ -113,11 +115,11 @@ export default function TheTicketingCoPage() {
           <div style={rule} />
           <h2 style={h2}>Start your application</h2>
           <p style={{ margin: 0, fontSize: 17, lineHeight: 1.5, color: '#E3E9F4' }}>
-            Tell us about your business and what you need. We&apos;ll reach out within 2 business days, and most offers
+            A few quick questions and how much you need. We&apos;ll reach out within 2 business days, and most offers
             come within 3–5.
           </p>
         </div>
-        <ExpressEmbed src={FORM_URL} title="SoundCheck Capital Express application" />
+        <ExpressEmbed src={FORM_URL} title="The Ticketing Co. funding application" />
         <p style={{ margin: 0, fontSize: 16, color: '#E3E9F4' }}>
           Questions? Ask your Ticketing Co. contact, or email Steve at{' '}
           <a href="mailto:steve@soundcheckcapital.com" style={link}>steve@soundcheckcapital.com</a>
