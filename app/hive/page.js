@@ -1,5 +1,6 @@
 import { Anton, Archivo } from 'next/font/google'
 import ExpressEmbed from '../../components/ExpressEmbed'
+import PartnerFAQ from '../../components/PartnerFAQ'
 
 // Unlisted partner page: noindex, not in the sitemap, no nav links.
 // Design from Steve (Slack C08RK7YDX3L 1792773787.183289), same layout as /bem. Embeds the light Hive form
@@ -35,6 +36,17 @@ const STEPS = [
   ['01', 'Apply', 'Enter your quote and answer a few quick questions about your business.'],
   ['02', 'Get your offer', 'Clear terms, usually within 3–5 business days.'],
   ['03', 'Launch and repay as you sell', 'SoundCheck pays Hive up front. Repayment comes out of ticket sales automatically.'],
+]
+
+const FAQ = [
+  ["What does it cost?", "A one-time fee of 10–20% of the amount you fund, depending on how quickly you repay. It's agreed before you sign, and your offer shows the full amount you'll repay up front. There's no interest and no hidden fees."],
+  ["How is repayment taken?", "Automatically, from your ticket sales. Your ticketing platform sends SoundCheck an agreed share of each sale, or it comes from your own Stripe account if you take payments there. No invoices or monthly bills, and it stops once the total is repaid."],
+  ["What if tickets don't sell as expected?", "Repayment just takes longer. You only repay as tickets sell, and the total you owe doesn't change."],
+  ["What if an event is postponed or canceled?", "SoundCheck funds your business, not a single show, so repayment continues from your other ticket sales. If a date moves or is canceled, let us know early and we'll work through it with you."],
+  ["Who qualifies?", "US businesses with a US bank account, operating for more than a year, with at least $100K in annual revenue and regular ticketed events. Tickets must be sold through a platform that can send payments to SoundCheck, or through your own Stripe account."],
+  ["How much can I fund?", "From $5,000 up to $1M, covering a Hive subscription, a prepaid SMS package, or both. The amount depends on your actual ticket sales over the past year, not projections."],
+  ["How fast is funding?", "The application takes a few minutes. You'll usually have an offer within 3–5 business days, and funds arrive 1–2 business days after you sign."],
+  ["Who gets paid, and when?", "Once you're approved and the agreement is signed, SoundCheck pays Hive directly for your subscription, SMS package or both, so you can get started right away."],
 ]
 
 function SectionTitle({ children }) {
@@ -108,6 +120,11 @@ export default function HivePage() {
           Questions? Ask your Hive rep, or email Steve at{' '}
           <a href="mailto:steve@soundcheckcapital.com" style={link}>steve@soundcheckcapital.com</a>
         </p>
+      </section>
+
+      <section id="faq" style={{ ...section, gap: 32 }}>
+        <SectionTitle>Common questions</SectionTitle>
+        <PartnerFAQ items={FAQ} question='#FFFFFF' answer='#E4E5E8' border='rgba(255,255,255,0.18)' />
       </section>
 
       <footer style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}>
