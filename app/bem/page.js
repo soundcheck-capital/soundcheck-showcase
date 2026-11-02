@@ -1,4 +1,5 @@
 import ExpressEmbed from '../../components/ExpressEmbed'
+import PartnerFAQ from '../../components/PartnerFAQ'
 
 // Unlisted partner page: noindex, not in the sitemap, no nav links.
 // Design approved by BEM (Steve, Slack #product 1792019160.628759). Embeds the light BEM form
@@ -30,6 +31,17 @@ const STEPS = [
   ['01', 'Apply', 'Answer a few quick questions about your business.'],
   ['02', 'Get your offer', 'Clear terms, usually within 3–5 business days.'],
   ['03', 'Launch and repay as you sell', 'Repayment comes out of ticket sales automatically. No monthly bills.'],
+]
+
+const FAQ = [
+  ["What does it cost?", "A one-time fee of 10–20% of the amount you fund, depending on how quickly you repay. It's agreed before you sign, and your offer shows the full amount you'll repay up front. There's no interest and no hidden fees."],
+  ["How is repayment taken?", "Automatically, from your ticket sales. Your ticketing platform sends SoundCheck an agreed share of each sale, or it comes from your own Stripe account if you take payments there. No invoices or monthly bills, and it stops once the total is repaid."],
+  ["What if tickets don't sell as expected?", "Repayment just takes longer. You only repay as tickets sell, and the total you owe doesn't change."],
+  ["What if an event is postponed or canceled?", "SoundCheck funds your business, not a single show, so repayment continues from your other ticket sales. If a date moves or is canceled, let us know early and we'll work through it with you."],
+  ["Who qualifies?", "US businesses with a US bank account, operating for more than a year, with at least $100K in annual revenue and regular ticketed events. Tickets must be sold through a platform that can send payments to SoundCheck, or through your own Stripe account."],
+  ["How much can I fund?", "From $5,000 up to $1M, covering BEM's management fee, your paid media budget, or both. The amount depends on your actual ticket sales over the past year, not projections."],
+  ["How fast is funding?", "The application takes a few minutes. You'll usually have an offer within 3–5 business days, and funds arrive 1–2 business days after you sign."],
+  ["Who gets paid, and when?", "Once you're approved and the agreement is signed, SoundCheck pays BEM directly for the management fee and pays you for any media budget you fund, so you can spend it with the ad channels."],
 ]
 
 export default function BemPage() {
@@ -77,6 +89,11 @@ export default function BemPage() {
             </li>
           ))}
         </ol>
+        <p style={{ margin: '-8px 0 0', fontSize: 15, lineHeight: 1.5, color: '#E8DDF3' }}>
+          <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>One requirement:</strong> you&apos;ll need to sell tickets
+          through a platform that can send payments to SoundCheck, or use your own Stripe account. Not sure? Ask your BEM
+          rep or <a href="mailto:steve@soundcheckcapital.com" style={link}>email Steve</a>.
+        </p>
       </section>
 
       <section id="apply" style={{ ...section, gap: 24 }}>
@@ -92,6 +109,14 @@ export default function BemPage() {
           Questions? Ask your BEM rep, or email Steve at{' '}
           <a href="mailto:steve@soundcheckcapital.com" style={link}>steve@soundcheckcapital.com</a>
         </p>
+      </section>
+
+      <section id="faq" style={{ ...section, gap: 32 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={rule} />
+          <h2 style={h2}>Common questions</h2>
+        </div>
+        <PartnerFAQ items={FAQ} question="#FFFFFF" answer="#F3EEF8" border="rgba(255,255,255,0.18)" weight={500} />
       </section>
 
       <footer style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
