@@ -40,16 +40,16 @@ export default function PostHogProvider({ children }) {
     }
     document.addEventListener('click', onClick, true)
 
-    // Partner forms (finance.soundcheckcapital.com/<partner>/, in an iframe via
-    // ExpressEmbed) post soundcheck-express:submitted after a successful submit.
+    // Pre-onboarding forms (finance.soundcheckcapital.com/<partner>/, in an iframe via
+    // ExpressEmbed) post soundcheck-preonboarding:submitted after a successful submit.
     // Only trust messages from an iframe on this page.
     const onMessage = (e) => {
-      if (!posthog || e.data?.type !== 'soundcheck-express:submitted') return
+      if (!posthog || e.data?.type !== 'soundcheck-preonboarding:submitted') return
       if (![...document.querySelectorAll('iframe')].some((f) => f.contentWindow === e.source)) return
       const partner = typeof e.data.partner === 'string' && e.data.partner
         ? e.data.partner
         : window.location.pathname.split('/')[1]
-      posthog.capture('express_form_submitted', { partner, location: partner })
+      posthog.capture('pre_onboarding_form_submitted', { partner, location: partner })
     }
     window.addEventListener('message', onMessage)
 
