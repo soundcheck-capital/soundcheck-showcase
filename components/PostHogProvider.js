@@ -22,6 +22,9 @@ export default function PostHogProvider({ children }) {
         capture_pageview: 'history_change',
         capture_pageleave: true,
         person_profiles: 'identified_only',
+        // Netlify's Next runtime corrupts binary bodies on the /ingest rewrite
+        // (gzip → PostHog 400 "invalid GZIP data"). Plain JSON passes intact.
+        disable_compression: true,
       })
     })
 
