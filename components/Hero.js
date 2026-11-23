@@ -393,6 +393,8 @@ export default function Hero() {
                   <button
                     className={`hero-form-email-button ${isLoading ? 'hero-form-email-button-loading' : ''}`}
                     onClick={handleStartNowClick}
+                    data-ph-event="cta_get_funded_click"
+                    data-ph-location="hero"
                     disabled={isLoading || !customerType}
                   >
                     {isLoading ? (

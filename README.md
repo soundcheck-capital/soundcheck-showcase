@@ -54,3 +54,11 @@ soundcheck-showcase/
 - **React** - Bibliothèque JavaScript
 - **GraphQL** - Requêtes de données
 
+
+## Environment variables (Next.js app)
+
+Copy `.env.example` to `.env.local` for local work; set the same keys in Netlify → Site configuration → Environment variables.
+
+| Variable | Effect when set |
+|---|---|
+| `NEXT_PUBLIC_POSTHOG_KEY` | Loads PostHog (EU cloud) through the `/ingest` proxy. Cookieless: `persistence: 'memory'`, no cookie or localStorage, so no consent banner is needed. Tracks pageviews, page leaves and the custom events `cta_get_funded_click`, `contact_click`, `apply_click` (each with a `location` property). Unset = PostHog is never loaded. |
