@@ -13,10 +13,16 @@ const DESCRIPTIONS = {
 
 export function legalMetadata(slug) {
   const { title } = readLegalDoc(slug)
+  const pageTitle = `${title} | SoundCheck Capital`
+  const description = DESCRIPTIONS[slug]
+  // openGraph/twitter replace the root layout's objects wholesale, so without
+  // these a shared legal page would show the home page's title and URL.
   return {
-    title: `${title} | SoundCheck Capital`,
-    description: DESCRIPTIONS[slug],
+    title: pageTitle,
+    description,
     alternates: { canonical: `https://soundcheckcapital.com/${slug}` },
+    openGraph: { type: 'website', siteName: 'SoundCheck Capital', locale: 'en_US', url: `/${slug}`, title: pageTitle, description, images: ['/opengraph-image'] },
+    twitter: { card: 'summary_large_image', title: pageTitle, description, images: ['/opengraph-image'] },
   }
 }
 
