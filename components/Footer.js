@@ -46,7 +46,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p className="footer-copyright">© {new Date().getFullYear()} SoundCheck Capital. All rights reserved.</p>
+            <p className="footer-copyright" suppressHydrationWarning>© {new Date().getFullYear()} SoundCheck Capital. All rights reserved.</p>
             <div className="footer-social">
               <a href="https://www.linkedin.com/company/soundcheck-capital" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg width="60" height="60" viewBox="0 0 14 14" fill="none">
