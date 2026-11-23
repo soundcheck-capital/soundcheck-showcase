@@ -4,6 +4,8 @@ import WhyChoose from '../components/WhyChoose'
 import FAQ from '../components/FAQ'
 import Footer from '../components/Footer'
 
+export const metadata = { alternates: { canonical: '/' } }
+
 export default function Home() {
   return (
     <>
