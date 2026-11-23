@@ -61,6 +61,6 @@ Copy `.env.example` to `.env.local` for local work; set the same keys in Netlify
 
 | Variable | Effect when set |
 |---|---|
-| `NEXT_PUBLIC_POSTHOG_KEY` | Loads PostHog (US cloud) through the `/ingest` proxy. Cookieless: `persistence: 'memory'`, no cookie or localStorage, so no consent banner is needed. Tracks pageviews, page leaves and the custom events `cta_get_funded_click`, `contact_click`, `apply_click` (each with a `location` property). Unset = PostHog is never loaded. |
+| `NEXT_PUBLIC_POSTHOG_KEY` | Loads PostHog (US cloud) through the `/ingest` proxy. Cookieless: `persistence: 'memory'`, no cookie or localStorage, so no consent banner is needed. Tracks pageviews, page leaves and the custom events `cta_get_funded_click`, `contact_click`, `apply_click` (each with a `location` property), plus `express_form_submitted` (with `partner`) when an embedded partner form posts `soundcheck-express:submitted`. Unset = PostHog is never loaded. |
 | `NEXT_PUBLIC_HUBSPOT_PORTAL_ID` | Loads the HubSpot tracking code (`afterInteractive`). **It sets cookies**: before setting this variable, enable the cookie consent banner in HubSpot → Settings → Privacy & Consent, so visitors are asked first. Our portal is on `app.hubspot.com` (US data center). |
 | `NEXT_PUBLIC_HUBSPOT_SCRIPT_HOST` | Optional script host, default `js.hs-scripts.com`. Use `js-eu1.hs-scripts.com` for an EU-hosted portal. |
