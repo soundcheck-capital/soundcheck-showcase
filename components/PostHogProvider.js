@@ -5,7 +5,7 @@ import { clickEvent } from '../utils/tracking'
 
 const KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
 
-// Cookieless PostHog (EU), proxied through /ingest (see next.config.js).
+// Cookieless PostHog (US cloud), proxied through /ingest (see next.config.js).
 // persistence 'memory' = no cookie, no localStorage, so no consent banner.
 // Nothing loads or fires when NEXT_PUBLIC_POSTHOG_KEY is unset.
 export default function PostHogProvider({ children }) {
@@ -17,7 +17,7 @@ export default function PostHogProvider({ children }) {
       posthog = ph
       posthog.init(KEY, {
         api_host: '/ingest',
-        ui_host: 'https://eu.posthog.com',
+        ui_host: 'https://us.posthog.com',
         persistence: 'memory',
         capture_pageview: 'history_change',
         capture_pageleave: true,
