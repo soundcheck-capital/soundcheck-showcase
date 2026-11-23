@@ -1,4 +1,5 @@
 import './globals.css'
+import Script from 'next/script'
 import LayoutClient from '../components/LayoutClient'
 
 const TITLE = 'SoundCheck Capital | Ticket Sales Advances for Live Events'
@@ -22,6 +23,12 @@ export const metadata = {
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
+// HubSpot tracking code. Sets cookies: only set the portal ID once HubSpot's
+// cookie consent banner is enabled (see README). Portal is on app.hubspot.com
+// (US), hence js.hs-scripts.com; EU portals use js-eu1.hs-scripts.com.
+const HUBSPOT_PORTAL_ID = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID
+const HUBSPOT_SCRIPT_HOST = process.env.NEXT_PUBLIC_HUBSPOT_SCRIPT_HOST || 'js.hs-scripts.com'
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -33,6 +40,9 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <LayoutClient>{children}</LayoutClient>
+        {HUBSPOT_PORTAL_ID && (
+          <Script id="hs-script-loader" strategy="afterInteractive" src={`https://${HUBSPOT_SCRIPT_HOST}/${HUBSPOT_PORTAL_ID}.js`} />
+        )}
       </body>
     </html>
   )
