@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import './DocuSignSuccess.css'
 
+export const metadata = { robots: { index: false, follow: false } }
+
 export default function DocuSignSuccessPage() {
   return (
     <div className="docusign-success">

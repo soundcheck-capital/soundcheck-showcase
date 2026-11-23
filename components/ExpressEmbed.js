@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 // The Express form inside an iframe. It posts its height (soundcheck-express:height) so the
 // iframe never scrolls on its own, and soundcheck-express:page when a new step starts.
+// soundcheck-preonboarding:submitted (after a successful submit) is tracked in PostHogProvider.
 export default function ExpressEmbed({ src, title }) {
   const ref = useRef(null)
   const [height, setHeight] = useState(900)
