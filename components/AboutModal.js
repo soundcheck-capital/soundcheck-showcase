@@ -32,7 +32,7 @@ export default function AboutModal({ isOpen, onClose }) {
 
           <p>We have decades of experience in live entertainment from promotion to ticketing and financing.</p>
 
-          <p>Our team has arranged $100+ million in financing for independent venues, promoters, and festivals and has advised Media & Entertainment companies on M&A transactions, for a total value in excess of US$30 billion.</p>
+          <p>Our team has funded $100+ million for independent venues, promoters, and festivals and has advised Media & Entertainment companies on M&A transactions, for a total value in excess of US$30 billion.</p>
 
           <p>We pioneered the creation of NIVA, the driving force behind the $16 billion Shuttered Venue Operators Grant (SVOG) program passed by Congress in December 2020.</p>
 

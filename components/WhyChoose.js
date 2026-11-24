@@ -22,7 +22,7 @@ export default function WhyChoose() {
         </svg>
       ),
       title: "Fast Decision",
-      description: "Get approved and funded in as little as 72 hours."
+      description: "Get approved in 3-5 days."
     },
     {
       icon: (
