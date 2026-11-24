@@ -34,6 +34,7 @@ export default function Footer() {
               <ul className="footer-links">
                 <li><button className="footer-link-button" onClick={() => setIsAboutOpen(true)}>About</button></li>
                 <li><a href="https://meetings.hubspot.com/soberman" target="_blank" rel="noopener noreferrer">Contact</a></li>
+                <li><a href="mailto:hello@soundcheckcapital.com">hello@soundcheckcapital.com</a></li>
               </ul>
             </div>
             <div className="footer-column">
